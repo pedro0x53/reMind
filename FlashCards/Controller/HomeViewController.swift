@@ -63,6 +63,9 @@ class HomeViewController: UIViewController {
         if flashCards.isEmpty {
             self.home.card.defaultSettings()
         } else {
+            if currentCardIndex == flashCards.count {
+                currentCardIndex = 0
+            }
             let card = flashCards[currentCardIndex]
             if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
                 self.home.card.configure(term: term, meaning: meaning)
