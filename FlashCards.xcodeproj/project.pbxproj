@@ -7,23 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1A1C9D253F2FA500B2E4B6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1C9C253F2FA500B2E4B6 /* Card.swift */; };
+		FE1A1CA1253F48DB00B2E4B6 /* NewTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */; };
+		FE1A1CA4253F48EE00B2E4B6 /* NewTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */; };
 		FE5270BD253EFAEA00DEEC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */; };
 		FE5270BF253EFAEA00DEEC87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270BE253EFAEA00DEEC87 /* SceneDelegate.swift */; };
-		FE5270C1253EFAEA00DEEC87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270C0253EFAEA00DEEC87 /* ViewController.swift */; };
-		FE5270C4253EFAEA00DEEC87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5270C2253EFAEA00DEEC87 /* Main.storyboard */; };
 		FE5270C6253EFAEC00DEEC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5270C5253EFAEC00DEEC87 /* Assets.xcassets */; };
 		FE5270C9253EFAEC00DEEC87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5270C7253EFAEC00DEEC87 /* LaunchScreen.storyboard */; };
+		FE5270D8253EFB4500DEEC87 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270D7253EFB4500DEEC87 /* HomeViewController.swift */; };
+		FE5270DC253EFB9B00DEEC87 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270DB253EFB9B00DEEC87 /* Home.swift */; };
+		FE5270DF253EFC3800DEEC87 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270DE253EFC3800DEEC87 /* Config.swift */; };
+		FE5270E4253EFDBF00DEEC87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270E3253EFDBF00DEEC87 /* Colors.swift */; };
+		FE5270E8253F032300DEEC87 /* TermListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270E7253F032300DEEC87 /* TermListViewController.swift */; };
+		FE5270F1253F03B000DEEC87 /* TermList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270F0253F03B000DEEC87 /* TermList.swift */; };
+		FE71B4D3254063CB0006185D /* FlashCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE71B4D1254063CB0006185D /* FlashCard.xcdatamodeld */; };
+		FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */; };
+		FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */; };
+		FEEF31FF25405CB400FFC7BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE1A1C9C253F2FA500B2E4B6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTermViewController.swift; sourceTree = "<group>"; };
+		FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTerm.swift; sourceTree = "<group>"; };
 		FE5270B9253EFAEA00DEEC87 /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE5270BE253EFAEA00DEEC87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE5270C0253EFAEA00DEEC87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FE5270C3253EFAEA00DEEC87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE5270C5253EFAEC00DEEC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE5270C8253EFAEC00DEEC87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE5270CA253EFAEC00DEEC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE5270D7253EFB4500DEEC87 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FE5270DB253EFB9B00DEEC87 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		FE5270DE253EFC3800DEEC87 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		FE5270E3253EFDBF00DEEC87 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FE5270E7253F032300DEEC87 /* TermListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListViewController.swift; sourceTree = "<group>"; };
+		FE5270F0253F03B000DEEC87 /* TermList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermList.swift; sourceTree = "<group>"; };
+		FE71B4D2254063CB0006185D /* FlashCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashCard.xcdatamodel; sourceTree = "<group>"; };
+		FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditiTermViewController.swift; sourceTree = "<group>"; };
+		FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDelegate.swift; sourceTree = "<group>"; };
+		FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE1A1C9B253F2F8200B2E4B6 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FE1A1C9C253F2FA500B2E4B6 /* Card.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		FE5270B0253EFAEA00DEEC87 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +86,90 @@
 		FE5270BB253EFAEA00DEEC87 /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
-				FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */,
-				FE5270BE253EFAEA00DEEC87 /* SceneDelegate.swift */,
-				FE5270C0253EFAEA00DEEC87 /* ViewController.swift */,
-				FE5270C2253EFAEA00DEEC87 /* Main.storyboard */,
+				FEEF31FD25405C9500FFC7BB /* Services */,
+				FE5270D4253EFB0B00DEEC87 /* Controller */,
+				FE5270D3253EFB0700DEEC87 /* View */,
+				FE5270D2253EFAFF00DEEC87 /* Model */,
+				FE5270E1253EFDA700DEEC87 /* Utils */,
+				FE5270D1253EFAF800DEEC87 /* Shared */,
 				FE5270C5253EFAEC00DEEC87 /* Assets.xcassets */,
 				FE5270C7253EFAEC00DEEC87 /* LaunchScreen.storyboard */,
 				FE5270CA253EFAEC00DEEC87 /* Info.plist */,
 			);
 			path = FlashCards;
+			sourceTree = "<group>";
+		};
+		FE5270D1253EFAF800DEEC87 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */,
+				FE5270BE253EFAEA00DEEC87 /* SceneDelegate.swift */,
+				FE5270DE253EFC3800DEEC87 /* Config.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		FE5270D2253EFAFF00DEEC87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE71B4D1254063CB0006185D /* FlashCard.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE5270D3253EFB0700DEEC87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE5270DB253EFB9B00DEEC87 /* Home.swift */,
+				FE5270F0253F03B000DEEC87 /* TermList.swift */,
+				FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE5270D4253EFB0B00DEEC87 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE5270D7253EFB4500DEEC87 /* HomeViewController.swift */,
+				FE5270E7253F032300DEEC87 /* TermListViewController.swift */,
+				FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */,
+				FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE5270E1253EFDA700DEEC87 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FE7E79F52541CA330065AC6C /* Protocols */,
+				FE1A1C9B253F2F8200B2E4B6 /* UIComponents */,
+				FE5270E2253EFDAC00DEEC87 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FE5270E2253EFDAC00DEEC87 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE5270E3253EFDBF00DEEC87 /* Colors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE7E79F52541CA330065AC6C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FEEF31FD25405C9500FFC7BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +231,6 @@
 			files = (
 				FE5270C9253EFAEC00DEEC87 /* LaunchScreen.storyboard in Resources */,
 				FE5270C6253EFAEC00DEEC87 /* Assets.xcassets in Resources */,
-				FE5270C4253EFAEA00DEEC87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +241,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE5270C1253EFAEA00DEEC87 /* ViewController.swift in Sources */,
+				FE5270D8253EFB4500DEEC87 /* HomeViewController.swift in Sources */,
+				FE71B4D3254063CB0006185D /* FlashCard.xcdatamodeld in Sources */,
+				FE5270E4253EFDBF00DEEC87 /* Colors.swift in Sources */,
 				FE5270BD253EFAEA00DEEC87 /* AppDelegate.swift in Sources */,
+				FE5270E8253F032300DEEC87 /* TermListViewController.swift in Sources */,
+				FE5270DF253EFC3800DEEC87 /* Config.swift in Sources */,
+				FE5270DC253EFB9B00DEEC87 /* Home.swift in Sources */,
+				FEEF31FF25405CB400FFC7BB /* CoreDataManager.swift in Sources */,
+				FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */,
+				FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */,
 				FE5270BF253EFAEA00DEEC87 /* SceneDelegate.swift in Sources */,
+				FE5270F1253F03B000DEEC87 /* TermList.swift in Sources */,
+				FE1A1CA4253F48EE00B2E4B6 /* NewTerm.swift in Sources */,
+				FE1A1C9D253F2FA500B2E4B6 /* Card.swift in Sources */,
+				FE1A1CA1253F48DB00B2E4B6 /* NewTermViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FE5270C2253EFAEA00DEEC87 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE5270C3253EFAEA00DEEC87 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FE5270C7253EFAEC00DEEC87 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -341,6 +449,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE71B4D1254063CB0006185D /* FlashCard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE71B4D2254063CB0006185D /* FlashCard.xcdatamodel */,
+			);
+			currentVersion = FE71B4D2254063CB0006185D /* FlashCard.xcdatamodel */;
+			path = FlashCard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FE5270B1253EFAEA00DEEC87 /* Project object */;
 }
