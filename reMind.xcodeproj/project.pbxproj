@@ -30,7 +30,7 @@
 		FE1A1C9C253F2FA500B2E4B6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTermViewController.swift; sourceTree = "<group>"; };
 		FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTerm.swift; sourceTree = "<group>"; };
-		FE5270B9253EFAEA00DEEC87 /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5270B9253EFAEA00DEEC87 /* reMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE5270BE253EFAEA00DEEC87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FE5270C5253EFAEC00DEEC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 		FE5270BA253EFAEA00DEEC87 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FE5270B9253EFAEA00DEEC87 /* FlashCards.app */,
+				FE5270B9253EFAEA00DEEC87 /* reMind.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FE5270B8253EFAEA00DEEC87 /* FlashCards */ = {
+		FE5270B8253EFAEA00DEEC87 /* reMind */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE5270CD253EFAEC00DEEC87 /* Build configuration list for PBXNativeTarget "FlashCards" */;
+			buildConfigurationList = FE5270CD253EFAEC00DEEC87 /* Build configuration list for PBXNativeTarget "reMind" */;
 			buildPhases = (
 				FE5270B5253EFAEA00DEEC87 /* Sources */,
 				FE5270B6253EFAEA00DEEC87 /* Frameworks */,
@@ -187,9 +187,9 @@
 			);
 			dependencies = (
 			);
-			name = FlashCards;
+			name = reMind;
 			productName = FlashCards;
-			productReference = FE5270B9253EFAEA00DEEC87 /* FlashCards.app */;
+			productReference = FE5270B9253EFAEA00DEEC87 /* reMind.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +206,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FE5270B4253EFAEA00DEEC87 /* Build configuration list for PBXProject "FlashCards" */;
+			buildConfigurationList = FE5270B4253EFAEA00DEEC87 /* Build configuration list for PBXProject "reMind" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,7 +219,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE5270B8253EFAEA00DEEC87 /* FlashCards */,
+				FE5270B8253EFAEA00DEEC87 /* reMind */,
 			);
 		};
 /* End PBXProject section */
@@ -430,7 +430,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE5270B4253EFAEA00DEEC87 /* Build configuration list for PBXProject "FlashCards" */ = {
+		FE5270B4253EFAEA00DEEC87 /* Build configuration list for PBXProject "reMind" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE5270CB253EFAEC00DEEC87 /* Debug */,
@@ -439,7 +439,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE5270CD253EFAEC00DEEC87 /* Build configuration list for PBXNativeTarget "FlashCards" */ = {
+		FE5270CD253EFAEC00DEEC87 /* Build configuration list for PBXNativeTarget "reMind" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE5270CE253EFAEC00DEEC87 /* Debug */,
