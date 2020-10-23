@@ -43,7 +43,7 @@
                                         <constraint firstItem="eAB-u3-bDH" firstAttribute="centerY" secondItem="T4N-88-OcJ" secondAttribute="centerY" id="dTm-ch-HSl"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

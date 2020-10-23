@@ -29,7 +29,7 @@ class Card: UIView {
         let label = UILabel()
         label.text = "The term goes here"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 40, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         label.lineBreakMode = .byWordWrapping
         label.tintColor = .eerieBlack
         label.numberOfLines = 0
@@ -111,7 +111,7 @@ class Card: UIView {
     }
 
     public func defaultSettings() {
-        termLabel.text = "The term goes here"
-        meaningLabel.text = "The meaning goes here."
+        termLabel.text = "reMind"
+        meaningLabel.text = "Start to create your own cards!"
     }
 }

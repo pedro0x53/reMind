@@ -11,20 +11,28 @@ class Home: UIView {
 
     let backgroundImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "elipses_background"))
-        imageView.clipsToBounds = false
-        imageView.contentMode = .top
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+
+    let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let effectView = UIVisualEffectView(effect: blurEffect)
+        return effectView
     }()
 
     public let rememberLabel: UILabel = {
         let label = UILabel()
+        label.alpha = 0
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         label.tintColor = .eerieBlack
         return label
     }()
 
     public let card: Card = {
-        let card = Card(frame: CGRect(x: 0, y: 0, width: 330, height: 380))
+        let width = UIScreen.main.bounds.width * 0.9
+        let card = Card(frame: CGRect(x: 0, y: 0, width: width, height: width + 50))
         return card
     }()
 
@@ -42,26 +50,25 @@ class Home: UIView {
 
         self.addSubview(backgroundImage)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
-        backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        backgroundImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
-        let blurEffect = UIBlurEffect(style: .systemThinMaterialLight)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.frame = backgroundImage.frame
-        self.addSubview(blurredEffectView)
+        self.addSubview(blurView)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        blurView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        blurView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        blurView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
         self.addSubview(card)
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -30).isActive = true
-        card.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        card.widthAnchor.constraint(equalToConstant: 330).isActive = true
-        card.heightAnchor.constraint(equalToConstant: 380).isActive = true
+        card.center.x = self.center.x
+        card.center.y = self.center.y
 
         self.addSubview(rememberLabel)
         rememberLabel.translatesAutoresizingMaskIntoConstraints = false
-        rememberLabel.bottomAnchor.constraint(equalTo: card.topAnchor, constant: -25).isActive = true
-        rememberLabel.centerXAnchor.constraint(equalTo: card.centerXAnchor).isActive = true
+        rememberLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        rememberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
 }
