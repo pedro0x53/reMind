@@ -70,7 +70,7 @@
 		FE5270B0253EFAEA00DEEC87 = {
 			isa = PBXGroup;
 			children = (
-				FE5270BB253EFAEA00DEEC87 /* FlashCards */,
+				FE5270BB253EFAEA00DEEC87 /* reMind */,
 				FE5270BA253EFAEA00DEEC87 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,7 +83,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FE5270BB253EFAEA00DEEC87 /* FlashCards */ = {
+		FE5270BB253EFAEA00DEEC87 /* reMind */ = {
 			isa = PBXGroup;
 			children = (
 				FEEF31FD25405C9500FFC7BB /* Services */,
@@ -96,7 +96,7 @@
 				FE5270C7253EFAEC00DEEC87 /* LaunchScreen.storyboard */,
 				FE5270CA253EFAEC00DEEC87 /* Info.plist */,
 			);
-			path = FlashCards;
+			path = reMind;
 			sourceTree = "<group>";
 		};
 		FE5270D1253EFAF800DEEC87 /* Shared */ = {
@@ -396,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TF4K4YZ8PT;
-				INFOPLIST_FILE = FlashCards/Info.plist;
+				INFOPLIST_FILE = reMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,7 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TF4K4YZ8PT;
-				INFOPLIST_FILE = FlashCards/Info.plist;
+				INFOPLIST_FILE = reMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
