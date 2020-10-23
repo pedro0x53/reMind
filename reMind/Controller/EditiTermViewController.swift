@@ -29,6 +29,7 @@ class EditiTermViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTextFields()
+        setupGestures()
     }
 
     private func setupNavBar() {
@@ -55,6 +56,15 @@ class EditiTermViewController: UIViewController {
         coreDataManager.updateContext()
 
         self.navigationController?.popViewController(animated: true)
+    }
+
+    private func setupGestures() {
+        let endEditingGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(endEditingGesture)
+    }
+
+    @objc private func endEditing() {
+        view.endEditing(true)
     }
 
     private func setupTextFields() {

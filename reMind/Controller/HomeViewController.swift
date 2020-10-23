@@ -126,8 +126,6 @@ extension HomeViewController {
             
             card.center = CGPoint(x: view.center.x + point.x, y:  view.center.y + point.y)
             
-            let rotationAngle = point.x / view.bounds.width * 0.4
-            
             if point.x > 0 {
                 self.home.rememberLabel.text = "I remembered!"
             } else {
@@ -136,6 +134,7 @@ extension HomeViewController {
             
             self.home.rememberLabel.alpha = (point.x > 0) ? point.x / 200 : (point.x * -1) / 200
 
+            let rotationAngle = point.x / view.bounds.width * 0.4
             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
             card.alpha = (point.x > 0) ? 1 - point.x / 200 : 1 - (point.x * -1) / 200
             

@@ -25,9 +25,9 @@ class NewTermViewController: UIViewController {
         setupNavBar()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupGesturesRecognizers()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupGestures()
     }
 
     private func setupNavBar() {
@@ -62,7 +62,7 @@ class NewTermViewController: UIViewController {
         })
     }
 
-    private func setupGesturesRecognizers() {
+    private func setupGestures() {
         let endEditingGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         view.addGestureRecognizer(endEditingGesture)
     }
