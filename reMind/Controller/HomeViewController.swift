@@ -10,7 +10,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
 
-    private let home = Home()
+    private let home = Home(frame: UIScreen.main.bounds)
 
     private var flashCards: [NSManagedObject] = []
 
@@ -89,7 +89,7 @@ extension HomeViewController {
 
     private func updateCard() {
         self.currentCardIndex += 1
-        if self.currentCardIndex == flashCards.count && flashCards.count > 0 {
+        if self.currentCardIndex == flashCards.count {
             currentCardIndex = 0
         }
 
@@ -103,8 +103,9 @@ extension HomeViewController {
             home.card.flip()
         }
 
-        home.card.center = self.view.center
         home.card.transform = .identity
+        home.card.center.x = self.view.center.x
+        home.card.center.y = self.view.center.y
         
         home.card.alpha = 0
         home.card.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -126,17 +127,20 @@ extension HomeViewController {
             
             card.center = CGPoint(x: view.center.x + point.x, y:  view.center.y + point.y)
             
-            if point.x > 0 {
-                self.home.rememberLabel.text = "I remembered!"
-            } else {
-                self.home.rememberLabel.text = "I forgot!"
-            }
-            
-            self.home.rememberLabel.alpha = (point.x > 0) ? point.x / 200 : (point.x * -1) / 200
-
             let rotationAngle = point.x / view.bounds.width * 0.4
             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
-            card.alpha = (point.x > 0) ? 1 - point.x / 200 : 1 - (point.x * -1) / 200
+            
+            if point.x > 0 {
+                card.alpha = 1 - point.x / 230
+
+                self.home.rememberLabel.text = "I remembered!"
+                self.home.rememberLabel.alpha = point.x / 200
+            } else{
+                card.alpha = 1 - (point.x * -1) / 230
+
+                self.home.rememberLabel.text = "I forgot!"
+                self.home.rememberLabel.alpha = (point.x * -1) / 200
+            }
             
             if gesture.state == .ended {
                 if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  && flashCards.count > 0 {
@@ -144,7 +148,8 @@ extension HomeViewController {
                     self.updateCard()
                 } else {
                     UIView.animate(withDuration: 0.3) {
-                        card.center = self.view.center
+                        card.center.x = self.view.center.x
+                        card.center.y = self.view.center.y
                         card.transform = .identity
                         card.alpha = 1
 
