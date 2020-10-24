@@ -36,6 +36,12 @@ class Home: UIView {
         return card
     }()
 
+    public let swipeArea: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -62,13 +68,20 @@ class Home: UIView {
         blurView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         blurView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
-        self.addSubview(card)
-        card.center.x = self.center.x
-        card.center.y = self.center.y
-
         self.addSubview(rememberLabel)
         rememberLabel.translatesAutoresizingMaskIntoConstraints = false
         rememberLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         rememberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+
+        self.addSubview(swipeArea)
+        swipeArea.translatesAutoresizingMaskIntoConstraints = false
+        swipeArea.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        swipeArea.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
+        swipeArea.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
+        swipeArea.heightAnchor.constraint(equalToConstant: 150).isActive = true
+
+        self.addSubview(card)
+        card.center.x = self.center.x
+        card.center.y = self.center.y
     }
 }
