@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         loadTermsDataSource()
         setupCards()
-        setupGesture()
+        setupGestures()
     }
 
     override func viewDidLoad() {
@@ -72,6 +72,11 @@ class HomeViewController: UIViewController {
             }
         }
     }
+
+    private func setupGestures() {
+        setupPanGesture()
+        setupSwipeGestures()
+    }
 }
 
 extension HomeViewController: CallbackDelegate {
@@ -82,15 +87,16 @@ extension HomeViewController: CallbackDelegate {
 }
 
 extension HomeViewController {
-    private func setupGesture() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(animate))
+    private func setupPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         self.home.card.addGestureRecognizer(panGesture)
     }
 
     private func updateCard() {
-        self.currentCardIndex += 1
-        if self.currentCardIndex == flashCards.count {
+        if currentCardIndex == flashCards.count {
             currentCardIndex = 0
+        } else if currentCardIndex < 0 {
+            currentCardIndex = flashCards.count - 1
         }
 
         let flashCard = flashCards[currentCardIndex]
@@ -121,7 +127,7 @@ extension HomeViewController {
         }, completion: nil)
     }
 
-    @objc private func animate(_ gesture: UIPanGestureRecognizer) {
+    @objc private func panAction(_ gesture: UIPanGestureRecognizer) {
         if let card = gesture.view as? Card {
             let point = gesture.translation(in: view)
             
@@ -145,6 +151,7 @@ extension HomeViewController {
             if gesture.state == .ended {
                 if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  && flashCards.count > 0 {
                     card.alpha = 0
+                    self.currentCardIndex += 1
                     self.updateCard()
                 } else {
                     UIView.animate(withDuration: 0.3) {
@@ -157,6 +164,28 @@ extension HomeViewController {
                     }
                 }
             }
+        }
+    }
+}
+
+extension HomeViewController {
+    private func setupSwipeGestures() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipeLeft.direction = .left
+        self.home.swipeArea.addGestureRecognizer(swipeLeft)
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipeRight.direction = .right
+        self.home.swipeArea.addGestureRecognizer(swipeRight)
+    }
+
+    @objc private func swipeAction(_ swipe: UISwipeGestureRecognizer) {
+        if swipe.state == .ended {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.home.card.alpha = 0
+            })
+            currentCardIndex = (swipe.direction == .right) ? currentCardIndex - 1 : currentCardIndex + 1
+            updateCard()
         }
     }
 }
