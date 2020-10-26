@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
 
     private func setupCards() {
         if flashCards.isEmpty {
+            currentCardIndex = 0
             self.home.card.defaultSettings()
         } else {
             if currentCardIndex == flashCards.count {
@@ -93,28 +94,29 @@ extension HomeViewController {
     }
 
     private func updateCard() {
-        if currentCardIndex == flashCards.count {
-            currentCardIndex = 0
-        } else if currentCardIndex < 0 {
-            currentCardIndex = flashCards.count - 1
+        if !flashCards.isEmpty {
+            if currentCardIndex == flashCards.count {
+                currentCardIndex = 0
+            } else if currentCardIndex < 0 {
+                currentCardIndex = flashCards.count - 1
+            }
+
+            let flashCard = flashCards[currentCardIndex]
+
+            if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
+                self.home.card.configure(term: term, meaning: meaning)
+            }
         }
 
-        let flashCard = flashCards[currentCardIndex]
-
-        if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
-            self.home.card.configure(term: term, meaning: meaning)
-        }
-
-        if home.card.showMeaning {
-            home.card.flip()
-        }
-
+        home.card.alpha = 0
         home.card.transform = .identity
         home.card.center.x = self.view.center.x
         home.card.center.y = self.view.center.y
-        
-        home.card.alpha = 0
         home.card.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        if home.card.showMeaning {
+            home.card.flip()
+        }
         
         UIView.animate(withDuration: 0.3, animations: {
             self.home.rememberLabel.alpha = 0
