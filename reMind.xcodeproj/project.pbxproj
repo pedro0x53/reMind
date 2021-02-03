@@ -20,6 +20,8 @@
 		FE5270E4253EFDBF00DEEC87 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270E3253EFDBF00DEEC87 /* Colors.swift */; };
 		FE5270E8253F032300DEEC87 /* TermListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270E7253F032300DEEC87 /* TermListViewController.swift */; };
 		FE5270F1253F03B000DEEC87 /* TermList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270F0253F03B000DEEC87 /* TermList.swift */; };
+		FE5655C225CB66C80066EE02 /* NewDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5655C125CB66C80066EE02 /* NewDeck.swift */; };
+		FE5655C525CB6E130066EE02 /* NewDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5655C425CB6E130066EE02 /* NewDeckViewController.swift */; };
 		FE71B4D3254063CB0006185D /* FlashCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE71B4D1254063CB0006185D /* FlashCard.xcdatamodeld */; };
 		FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */; };
 		FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */; };
@@ -46,6 +48,8 @@
 		FE5270E3253EFDBF00DEEC87 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FE5270E7253F032300DEEC87 /* TermListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListViewController.swift; sourceTree = "<group>"; };
 		FE5270F0253F03B000DEEC87 /* TermList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermList.swift; sourceTree = "<group>"; };
+		FE5655C125CB66C80066EE02 /* NewDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeck.swift; sourceTree = "<group>"; };
+		FE5655C425CB6E130066EE02 /* NewDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeckViewController.swift; sourceTree = "<group>"; };
 		FE71B4D2254063CB0006185D /* FlashCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashCard.xcdatamodel; sourceTree = "<group>"; };
 		FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditiTermViewController.swift; sourceTree = "<group>"; };
 		FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				FE5270F0253F03B000DEEC87 /* TermList.swift */,
 				FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */,
 				FEFB98CF25CB1E2B006A1DF8 /* NewHome.swift */,
+				FE5655C125CB66C80066EE02 /* NewDeck.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */,
 				FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */,
 				FEFB98DA25CB2575006A1DF8 /* NewHomeViewController.swift */,
+				FE5655C425CB6E130066EE02 /* NewDeckViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE5270D8253EFB4500DEEC87 /* HomeViewController.swift in Sources */,
+				FE5655C525CB6E130066EE02 /* NewDeckViewController.swift in Sources */,
 				FE71B4D3254063CB0006185D /* FlashCard.xcdatamodeld in Sources */,
 				FE5270E4253EFDBF00DEEC87 /* Colors.swift in Sources */,
 				FEFB98DB25CB2575006A1DF8 /* NewHomeViewController.swift in Sources */,
@@ -270,6 +277,7 @@
 				FE5270DF253EFC3800DEEC87 /* Config.swift in Sources */,
 				FEFB98D825CB200E006A1DF8 /* DecksCollectionCell.swift in Sources */,
 				FE5270DC253EFB9B00DEEC87 /* Home.swift in Sources */,
+				FE5655C225CB66C80066EE02 /* NewDeck.swift in Sources */,
 				FEEF31FF25405CB400FFC7BB /* CoreDataManager.swift in Sources */,
 				FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */,
 				FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */,
