@@ -9,10 +9,11 @@ import UIKit
 
 class NewHome: UIView {
 
-    private let segmentedCrontrol: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["All", "Mine", "Shared"])
-        return segmentedControl
-    }()
+//    private let segmentedCrontrol: UISegmentedControl = {
+//        let segmentedControl = UISegmentedControl(items: ["All", "My Decks", "Shared"])
+//        segmentedControl.selectedSegmentIndex = 0
+//        return segmentedControl
+//    }()
 
     public let decksCollection = DecksCollection()
 
@@ -43,7 +44,7 @@ class NewHome: UIView {
 
         self.addSubview(backgroundImage)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backgroundImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -55,14 +56,14 @@ class NewHome: UIView {
         blurView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         blurView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
-        self.addSubview(segmentedCrontrol)
-        segmentedCrontrol.translatesAutoresizingMaskIntoConstraints = false
-        segmentedCrontrol.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        segmentedCrontrol.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        self.addSubview(segmentedCrontrol)
+//        segmentedCrontrol.translatesAutoresizingMaskIntoConstraints = false
+//        segmentedCrontrol.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+//        segmentedCrontrol.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 
         self.addSubview(decksCollection)
         decksCollection.translatesAutoresizingMaskIntoConstraints = false
-        decksCollection.topAnchor.constraint(equalTo: segmentedCrontrol.bottomAnchor, constant: 20).isActive = true
+        decksCollection.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         decksCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         decksCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         decksCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

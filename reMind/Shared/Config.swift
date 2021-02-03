@@ -10,7 +10,8 @@ import UIKit
 class Config {
 
     private let homeController      = NewHomeViewController()
-    private let termListController  = TermListViewController()
+    private let reviewController    = UIViewController()
+    private let settingsController  = UIViewController()
 
     public func mainController() -> UIViewController {
         let tabBarController = UITabBarController()
@@ -22,11 +23,15 @@ class Config {
         homeController.tabBarItem = UITabBarItem(title: "Home", image: firstItemImageSymbol, tag: 0)
         let homeNav = generateBlurredNaviagationController(rootController: homeController)
 
-        let secondItemImageSymbol = UIImage(systemName: "list.dash", withConfiguration: boldWeight)
-        termListController.tabBarItem = UITabBarItem(title: "My Terms", image: secondItemImageSymbol, tag: 1)
-        let wordNav = generateBlurredNaviagationController(rootController: termListController)
+        let secondItemImageSymbol = UIImage(systemName: "arrow.triangle.2.circlepath", withConfiguration: boldWeight)
+        reviewController.tabBarItem = UITabBarItem(title: "Review", image: secondItemImageSymbol, tag: 1)
+        let reviewNav = generateBlurredNaviagationController(rootController: reviewController)
         
-        tabBarController.viewControllers = [homeNav, wordNav]
+        let thirdItemImageSymbol = UIImage(systemName: "gear", withConfiguration: boldWeight)
+        settingsController.tabBarItem = UITabBarItem(title: "Settings", image: thirdItemImageSymbol, tag: 2)
+        let settingsNav = generateBlurredNaviagationController(rootController: settingsController)
+        
+        tabBarController.viewControllers = [homeNav, reviewNav, settingsNav]
         return tabBarController
     }
 

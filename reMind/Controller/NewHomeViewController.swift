@@ -29,15 +29,15 @@ class NewHomeViewController: UIViewController {
 
         let plusSymbol = UIImage(systemName: "plus", withConfiguration: semiboldWeight)
         let plusButton = UIBarButtonItem(image: plusSymbol,
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(newDeck))
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(newDeck))
 
-        let shareSymbol = UIImage(systemName: "square.and.arrow.up", withConfiguration: semiboldWeight)
+        let shareSymbol = UIImage(systemName: "magnifyingglass", withConfiguration: semiboldWeight)
         let shareButton = UIBarButtonItem(image: shareSymbol,
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(shareDeck))
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(shareDeck))
 
         self.navigationItem.rightBarButtonItems = [plusButton, shareButton]
     }
@@ -53,13 +53,12 @@ class NewHomeViewController: UIViewController {
     private func setupCollectionView() {
         self.newhomeView.decksCollection.delegate = self
         self.newhomeView.decksCollection.dataSource = self
-        self.newhomeView.decksCollection.register(DecksCollectionCell.self, forCellWithReuseIdentifier: DecksCollectionCell.identifier)
     }
 }
 
 extension NewHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -69,7 +68,7 @@ extension NewHomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
 
-//        cell.configure()
+        cell.configure()
 
         return cell
     }
