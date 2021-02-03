@@ -24,6 +24,10 @@
 		FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */; };
 		FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */; };
 		FEEF31FF25405CB400FFC7BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */; };
+		FEFB98D025CB1E2B006A1DF8 /* NewHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB98CF25CB1E2B006A1DF8 /* NewHome.swift */; };
+		FEFB98D425CB1F99006A1DF8 /* DecksCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB98D325CB1F99006A1DF8 /* DecksCollection.swift */; };
+		FEFB98D825CB200E006A1DF8 /* DecksCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB98D725CB200E006A1DF8 /* DecksCollectionCell.swift */; };
+		FEFB98DB25CB2575006A1DF8 /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB98DA25CB2575006A1DF8 /* NewHomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditiTermViewController.swift; sourceTree = "<group>"; };
 		FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackDelegate.swift; sourceTree = "<group>"; };
 		FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FEFB98CF25CB1E2B006A1DF8 /* NewHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHome.swift; sourceTree = "<group>"; };
+		FEFB98D325CB1F99006A1DF8 /* DecksCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksCollection.swift; sourceTree = "<group>"; };
+		FEFB98D725CB200E006A1DF8 /* DecksCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecksCollectionCell.swift; sourceTree = "<group>"; };
+		FEFB98DA25CB2575006A1DF8 /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		FE1A1C9B253F2F8200B2E4B6 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				FEFB98D225CB1F7A006A1DF8 /* DecksCollection */,
 				FE1A1C9C253F2FA500B2E4B6 /* Card.swift */,
 			);
 			path = UIComponents;
@@ -87,9 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				FEEF31FD25405C9500FFC7BB /* Services */,
-				FE5270D4253EFB0B00DEEC87 /* Controller */,
-				FE5270D3253EFB0700DEEC87 /* View */,
 				FE5270D2253EFAFF00DEEC87 /* Model */,
+				FE5270D3253EFB0700DEEC87 /* View */,
+				FE5270D4253EFB0B00DEEC87 /* Controller */,
 				FE5270E1253EFDA700DEEC87 /* Utils */,
 				FE5270D1253EFAF800DEEC87 /* Shared */,
 				FE5270C5253EFAEC00DEEC87 /* Assets.xcassets */,
@@ -123,6 +132,7 @@
 				FE5270DB253EFB9B00DEEC87 /* Home.swift */,
 				FE5270F0253F03B000DEEC87 /* TermList.swift */,
 				FE1A1CA3253F48EE00B2E4B6 /* NewTerm.swift */,
+				FEFB98CF25CB1E2B006A1DF8 /* NewHome.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,6 +144,7 @@
 				FE5270E7253F032300DEEC87 /* TermListViewController.swift */,
 				FE1A1CA0253F48DB00B2E4B6 /* NewTermViewController.swift */,
 				FE7E79F22541C0B70065AC6C /* EditiTermViewController.swift */,
+				FEFB98DA25CB2575006A1DF8 /* NewHomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +181,15 @@
 				FEEF31FE25405CB400FFC7BB /* CoreDataManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		FEFB98D225CB1F7A006A1DF8 /* DecksCollection */ = {
+			isa = PBXGroup;
+			children = (
+				FEFB98D325CB1F99006A1DF8 /* DecksCollection.swift */,
+				FEFB98D725CB200E006A1DF8 /* DecksCollectionCell.swift */,
+			);
+			path = DecksCollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,16 +264,20 @@
 				FE5270D8253EFB4500DEEC87 /* HomeViewController.swift in Sources */,
 				FE71B4D3254063CB0006185D /* FlashCard.xcdatamodeld in Sources */,
 				FE5270E4253EFDBF00DEEC87 /* Colors.swift in Sources */,
+				FEFB98DB25CB2575006A1DF8 /* NewHomeViewController.swift in Sources */,
 				FE5270BD253EFAEA00DEEC87 /* AppDelegate.swift in Sources */,
 				FE5270E8253F032300DEEC87 /* TermListViewController.swift in Sources */,
 				FE5270DF253EFC3800DEEC87 /* Config.swift in Sources */,
+				FEFB98D825CB200E006A1DF8 /* DecksCollectionCell.swift in Sources */,
 				FE5270DC253EFB9B00DEEC87 /* Home.swift in Sources */,
 				FEEF31FF25405CB400FFC7BB /* CoreDataManager.swift in Sources */,
 				FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */,
 				FE7E79F32541C0B70065AC6C /* EditiTermViewController.swift in Sources */,
 				FE5270BF253EFAEA00DEEC87 /* SceneDelegate.swift in Sources */,
+				FEFB98D025CB1E2B006A1DF8 /* NewHome.swift in Sources */,
 				FE5270F1253F03B000DEEC87 /* TermList.swift in Sources */,
 				FE1A1CA4253F48EE00B2E4B6 /* NewTerm.swift in Sources */,
+				FEFB98D425CB1F99006A1DF8 /* DecksCollection.swift in Sources */,
 				FE1A1C9D253F2FA500B2E4B6 /* Card.swift in Sources */,
 				FE1A1CA1253F48DB00B2E4B6 /* NewTermViewController.swift in Sources */,
 			);

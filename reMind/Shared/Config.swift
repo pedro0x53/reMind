@@ -9,7 +9,7 @@ import UIKit
 
 class Config {
 
-    private let homeController      = HomeViewController()
+    private let homeController      = NewHomeViewController()
     private let termListController  = TermListViewController()
 
     public func mainController() -> UIViewController {
