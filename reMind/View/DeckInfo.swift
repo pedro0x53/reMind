@@ -1,26 +1,18 @@
 //
-//  NewHome.swift
+//  DeckInfo.swift
 //  reMind
 //
-//  Created by Pedro Sousa on 03/02/21.
+//  Created by Pedro Sousa on 04/02/21.
 //
 
 import UIKit
 
-class NewHome: UIView {
-
-//    private let segmentedCrontrol: UISegmentedControl = {
-//        let segmentedControl = UISegmentedControl(items: ["All", "My Decks", "Shared"])
-//        segmentedControl.selectedSegmentIndex = 0
-//        return segmentedControl
-//    }()
-
-    public let decksCollection = DecksCollection()
+class DeckInfo: UIView {
 
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "elipses_background"))
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .center
         return imageView
     }()
 
@@ -30,6 +22,10 @@ class NewHome: UIView {
         return effectView
     }()
 
+    public let reviewCard: ReviewCard = ReviewCard()
+
+    public let tableView: WordsTable = WordsTable()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -38,7 +34,7 @@ class NewHome: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupLayout() {
         self.backgroundColor = .white
 
@@ -56,16 +52,19 @@ class NewHome: UIView {
         blurView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         blurView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
-//        self.addSubview(segmentedCrontrol)
-//        segmentedCrontrol.translatesAutoresizingMaskIntoConstraints = false
-//        segmentedCrontrol.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-//        segmentedCrontrol.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.addSubview(reviewCard)
+        reviewCard.translatesAutoresizingMaskIntoConstraints = false
+        reviewCard.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        reviewCard.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        reviewCard.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        reviewCard.heightAnchor.constraint(equalToConstant: 163).isActive = true
 
-        self.addSubview(decksCollection)
-        decksCollection.translatesAutoresizingMaskIntoConstraints = false
-        decksCollection.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        decksCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        decksCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        decksCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: reviewCard.bottomAnchor, constant: 20).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
+
 }

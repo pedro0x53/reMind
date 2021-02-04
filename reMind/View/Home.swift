@@ -1,52 +1,40 @@
 //
-//  Home.swift
-//  FlashCards
+//  NewHome.swift
+//  reMind
 //
-//  Created by Pedro Sousa on 20/10/20.
+//  Created by Pedro Sousa on 03/02/21.
 //
 
 import UIKit
 
 class Home: UIView {
 
-    let backgroundImage: UIImageView = {
+//    private let segmentedCrontrol: UISegmentedControl = {
+//        let segmentedControl = UISegmentedControl(items: ["All", "My Decks", "Shared"])
+//        segmentedControl.selectedSegmentIndex = 0
+//        return segmentedControl
+//    }()
+
+    public let decksCollection = DecksCollection()
+
+    private let backgroundImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "elipses_background"))
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .center
         return imageView
     }()
 
-    let blurView: UIVisualEffectView = {
+    private let blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let effectView = UIVisualEffectView(effect: blurEffect)
         return effectView
-    }()
-
-    public let rememberLabel: UILabel = {
-        let label = UILabel()
-        label.alpha = 0
-        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        label.tintColor = .eerieBlack
-        return label
-    }()
-
-    public let card: Card = {
-        let width = UIScreen.main.bounds.width * 0.9
-        let card = Card(frame: CGRect(x: 0, y: 0, width: width, height: width + 50))
-        return card
-    }()
-
-    public let swipeArea: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -56,7 +44,7 @@ class Home: UIView {
 
         self.addSubview(backgroundImage)
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        backgroundImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -68,20 +56,16 @@ class Home: UIView {
         blurView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         blurView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
-        self.addSubview(rememberLabel)
-        rememberLabel.translatesAutoresizingMaskIntoConstraints = false
-        rememberLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        rememberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        self.addSubview(segmentedCrontrol)
+//        segmentedCrontrol.translatesAutoresizingMaskIntoConstraints = false
+//        segmentedCrontrol.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+//        segmentedCrontrol.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 
-        self.addSubview(swipeArea)
-        swipeArea.translatesAutoresizingMaskIntoConstraints = false
-        swipeArea.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        swipeArea.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
-        swipeArea.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
-        swipeArea.heightAnchor.constraint(equalToConstant: 150).isActive = true
-
-        self.addSubview(card)
-        card.center.x = self.center.x
-        card.center.y = self.center.y
+        self.addSubview(decksCollection)
+        decksCollection.translatesAutoresizingMaskIntoConstraints = false
+        decksCollection.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        decksCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        decksCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        decksCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }

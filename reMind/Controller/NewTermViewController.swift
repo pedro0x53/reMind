@@ -22,22 +22,29 @@ class NewTermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupGestures()
+        setupNavBar()
     }
 
     private func setupNavBar() {
-        self.title = "New Term"
-        
-        navigationController?.navigationBar.tintColor = .eerieBlack
-        navigationController?.navigationBar.shadowImage = UIImage()
+        self.title = "New Word"
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveAction))
+        if self.isModal {
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+            self.navigationController?.navigationBar.topItem?.leftBarButtonItem = cancelButton
+        } else {
+            let backButton = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        }
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(saveAction))
     }
 
     @objc private func cancelAction() {
@@ -45,8 +52,8 @@ class NewTermViewController: UIViewController {
     }
 
     @objc private func saveAction() {
-        guard let termStr = newTerm.termTextField.text else { return }
-        guard let meaningStr = newTerm.meaningTextField.text else { return }
+        guard let termStr = newTerm.wordTextField.text else { return }
+        guard let meaningStr = newTerm.wordTextField.text else { return }
 
         if termStr.isEmpty || meaningStr.isEmpty {
             let alert = UIAlertController(title: "Required Fields", message: "Fill in all fields to save the card", preferredStyle: .alert)

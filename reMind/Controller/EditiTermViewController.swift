@@ -23,24 +23,32 @@ class EditiTermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTextFields()
         setupGestures()
+        setupNavBar()
     }
 
     private func setupNavBar() {
-        self.title = "Edit Term"
+        self.title = "Edit Word"
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cancelAction))
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(doneAction))
     }
 
     @objc private func doneAction() {
-        if let termStr = newTerm.termTextField.text, !termStr.isEmpty,
-           let meaningStr = newTerm.meaningTextField.text, !meaningStr.isEmpty {
+        if let termStr = newTerm.wordTextField.text, !termStr.isEmpty,
+           let meaningStr = newTerm.meaningTextView.text, !meaningStr.isEmpty {
             if let card = self.card {
                 card.setValue(termStr, forKey: "term")
                 card.setValue(meaningStr, forKey: "meaning")
@@ -58,6 +66,10 @@ class EditiTermViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    @objc private func cancelAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     private func setupGestures() {
         let endEditingGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         view.addGestureRecognizer(endEditingGesture)
@@ -70,8 +82,8 @@ class EditiTermViewController: UIViewController {
     private func setupTextFields() {
         if let card = self.card {
             if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
-                self.newTerm.termTextField.text = term
-                self.newTerm.meaningTextField.text = meaning
+                self.newTerm.wordTextField.text = term
+                self.newTerm.meaningTextView.text = meaning
             }
         }
     }

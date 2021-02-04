@@ -11,9 +11,9 @@ class DecksCollection: UICollectionView {
 
     private let layout: UICollectionViewFlowLayout = {
         let itemWidth = CGFloat((UIScreen.main.bounds.width - 60) / 2)
-        let itemHeight = CGFloat(((UIScreen.main.bounds.height * 0.75) / 3) - 40)
+
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.05)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 15
         layout.scrollDirection = .vertical

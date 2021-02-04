@@ -9,9 +9,9 @@ import UIKit
 
 class Config {
 
-    private let homeController      = NewHomeViewController()
-    private let reviewController    = UIViewController()
-    private let settingsController  = UIViewController()
+    private let homeController      = HomeViewController()
+    private let reviewController    = Default404ViewController()
+    private let settingsController  = Default404ViewController()
 
     public func mainController() -> UIViewController {
         let tabBarController = UITabBarController()
@@ -38,6 +38,9 @@ class Config {
     private func generateBlurredNaviagationController(rootController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootController)
         nav.navigationBar.isTranslucent = true
+        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav.navigationBar.shadowImage = UIImage()
+        nav.navigationBar.backgroundColor = .clear
         nav.navigationBar.tintColor = .eerieBlack
         return nav
     }

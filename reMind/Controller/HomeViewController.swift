@@ -1,193 +1,92 @@
 //
-//  HomeViewController.swift
-//  FlashCards
+//  NewHomeViewController.swift
+//  reMind
 //
-//  Created by Pedro Sousa on 20/10/20.
+//  Created by Pedro Sousa on 03/02/21.
 //
 
 import UIKit
-import CoreData
 
 class HomeViewController: UIViewController {
 
-    private let home = Home(frame: UIScreen.main.bounds)
-
-    private var flashCards: [NSManagedObject] = []
-
-    private let coreDataManager = CoreDataManager.shared
-
-    private var currentCardIndex = 0
+    private let homeView = Home()
 
     override func loadView() {
         super.loadView()
-        self.view = self.home
+        self.view = homeView
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadTermsDataSource()
-        setupCards()
-        setupGestures()
+        setupNavBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
-    }
-
-    private func loadTermsDataSource() {
-        self.flashCards = self.coreDataManager.readAllFlashCards()
+        setupCollectionView()
     }
 
     private func setupNavBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        self.title = "Decks"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
-        let boldWeight = UIImage.SymbolConfiguration(weight: .bold)
+        let semiboldWeight = UIImage.SymbolConfiguration(weight: .semibold)
 
-        let editImageSymbol = UIImage(systemName: "square.and.pencil", withConfiguration: boldWeight)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: editImageSymbol,
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(createNewWord))
+        let plusSymbol = UIImage(systemName: "plus", withConfiguration: semiboldWeight)
+        let plusButton = UIBarButtonItem(image: plusSymbol,
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(newDeck))
+
+        let searchSymbol = UIImage(systemName: "magnifyingglass", withConfiguration: semiboldWeight)
+        let searchButton = UIBarButtonItem(image: searchSymbol,
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(shareDeck))
+
+        self.navigationItem.rightBarButtonItems = [plusButton, searchButton]
     }
 
-    @objc private func createNewWord() {
-        let newWordController = NewTermViewController()
-        newWordController.delegate = self
-        let nav = UINavigationController(rootViewController: newWordController)
-        self.navigationController?.present(nav, animated: true, completion: nil)
+    @objc private func newDeck() {
+        let controller = NewDeckViewController()
+        let navController = UINavigationController(rootViewController: controller)
+        navController.navigationBar.tintColor = .eerieBlack
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 
-    private func setupCards() {
-        if flashCards.isEmpty {
-            currentCardIndex = 0
-            self.home.card.defaultSettings()
-        } else {
-            if currentCardIndex == flashCards.count {
-                currentCardIndex = 0
-            }
-            let card = flashCards[currentCardIndex]
-            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
-                self.home.card.configure(term: term, meaning: meaning)
-            }
-        }
+    @objc private func shareDeck() {
+        let alert = UIAlertController(title: "Oops!", message: "We are still working on this functionality.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
-    private func setupGestures() {
-        setupPanGesture()
-        setupSwipeGestures()
-    }
-}
-
-extension HomeViewController: CallbackDelegate {
-    func callback() {
-        loadTermsDataSource()
-        setupCards()
+    private func setupCollectionView() {
+        self.homeView.decksCollection.delegate = self
+        self.homeView.decksCollection.dataSource = self
     }
 }
 
-extension HomeViewController {
-    private func setupPanGesture() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction))
-        self.home.card.addGestureRecognizer(panGesture)
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
     }
-
-    private func updateCard() {
-        if !flashCards.isEmpty {
-            if currentCardIndex == flashCards.count {
-                currentCardIndex = 0
-            } else if currentCardIndex < 0 {
-                currentCardIndex = flashCards.count - 1
-            }
-
-            let flashCard = flashCards[currentCardIndex]
-
-            if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
-                self.home.card.configure(term: term, meaning: meaning)
-            }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: DecksCollectionCell.identifier, for: indexPath) as? DecksCollectionCell
+        else {
+            return UICollectionViewCell()
         }
 
-        home.card.alpha = 0
-        home.card.transform = .identity
-        home.card.center.x = self.view.center.x
-        home.card.center.y = self.view.center.y
-        home.card.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        
-        if home.card.showMeaning {
-            home.card.flip()
-        }
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.home.rememberLabel.alpha = 0
-        })
+        cell.configure()
 
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: { [unowned self] in
-                self.home.card.transform = .identity
-                self.home.card.alpha = 1
-        }, completion: nil)
+        return cell
     }
-
-    @objc private func panAction(_ gesture: UIPanGestureRecognizer) {
-        if let card = gesture.view as? Card {
-            let point = gesture.translation(in: view)
-            
-            card.center = CGPoint(x: view.center.x + point.x, y:  view.center.y + point.y)
-            
-            let rotationAngle = point.x / view.bounds.width * 0.4
-            card.transform = CGAffineTransform(rotationAngle: rotationAngle)
-            
-            if point.x > 0 {
-                card.alpha = 1 - point.x / 230
-
-                self.home.rememberLabel.text = "I remembered!"
-                self.home.rememberLabel.alpha = point.x / 200
-            } else{
-                card.alpha = 1 - (point.x * -1) / 230
-
-                self.home.rememberLabel.text = "I forgot!"
-                self.home.rememberLabel.alpha = (point.x * -1) / 200
-            }
-            
-            if gesture.state == .ended {
-                if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  && flashCards.count > 0 {
-                    card.alpha = 0
-                    self.currentCardIndex += 1
-                    self.updateCard()
-                } else {
-                    UIView.animate(withDuration: 0.3) {
-                        card.center.x = self.view.center.x
-                        card.center.y = self.view.center.y
-                        card.transform = .identity
-                        card.alpha = 1
-
-                        self.home.rememberLabel.alpha = 0
-                    }
-                }
-            }
-        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = DeckInfoViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
-}
-
-extension HomeViewController {
-    private func setupSwipeGestures() {
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
-        swipeLeft.direction = .left
-        self.home.swipeArea.addGestureRecognizer(swipeLeft)
-
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
-        swipeRight.direction = .right
-        self.home.swipeArea.addGestureRecognizer(swipeRight)
-    }
-
-    @objc private func swipeAction(_ swipe: UISwipeGestureRecognizer) {
-        if swipe.state == .ended {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.home.card.alpha = 0
-            })
-            currentCardIndex = (swipe.direction == .right) ? currentCardIndex - 1 : currentCardIndex + 1
-            updateCard()
-        }
-    }
+   
 }
