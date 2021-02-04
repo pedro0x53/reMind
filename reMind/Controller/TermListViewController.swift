@@ -24,11 +24,11 @@ class TermListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadWordsDataSource()
+        setupNavBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
         registerTableViewCell()
         self.termList.tableView.dataSource = self
         self.termList.tableView.delegate = self

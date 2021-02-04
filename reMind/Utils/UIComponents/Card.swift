@@ -20,7 +20,7 @@ class Card: UIView {
 
     private let back: UIView = {
         let view = UIView()
-        view.backgroundColor = .lavanderBleu
+        view.backgroundColor = .lavanderBlue
         view.layer.cornerRadius = 10
         return view
     }()
