@@ -23,6 +23,7 @@ class EditiTermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFieldsDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +49,7 @@ class EditiTermViewController: UIViewController {
 
     @objc private func doneAction() {
         if let termStr = newTerm.wordTextField.text, !termStr.isEmpty,
-           let meaningStr = newTerm.meaningTextView.text, !meaningStr.isEmpty {
+           let meaningStr = newTerm.meaningTextView.textView.text, !meaningStr.isEmpty {
             if let card = self.card {
                 card.setValue(termStr, forKey: "term")
                 card.setValue(meaningStr, forKey: "meaning")
@@ -83,8 +84,25 @@ class EditiTermViewController: UIViewController {
         if let card = self.card {
             if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
                 self.newTerm.wordTextField.text = term
-                self.newTerm.meaningTextView.text = meaning
+                self.newTerm.meaningTextView.textView.text = meaning
             }
         }
+    }
+}
+
+extension EditiTermViewController: UITextFieldDelegate, UITextViewDelegate {
+    private func setupFieldsDelegate() {
+        self.newTerm.wordTextField.delegate = self
+        self.newTerm.meaningTextView.delegate = self
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let customTextFiel = textField as? CustomTextField else { return false }
+        return customTextFiel.verifyField(shouldChangeCharactersIn: range, replacementString: string)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let customTextView = textView.superview as? CustomTextView else { return false }
+        return customTextView.verifyField(shouldChangeCharactersIn: range, replacementString: text)
     }
 }

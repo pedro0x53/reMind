@@ -24,6 +24,7 @@ class NewDeckViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGestures()
+        setupFieldsDelegate()
     }
 
     private func setupNavBar() {
@@ -34,20 +35,19 @@ class NewDeckViewController: UIViewController {
                                                                 target: self,
                                                                 action: #selector(cancelAction))
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next",
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
                                                                 style: .done,
                                                                 target: self,
-                                                                action: #selector(nextAction))
+                                                                action: #selector(saveAction))
     }
 
     @objc private func cancelAction() {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @objc private func nextAction() {
+    @objc private func saveAction() {
         if let name = newDeckView.nameTextField.text, !name.isEmpty {
-            let controller = NewDeckAddWordsViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Required Fields", message: "To create a deck you need to fill in at least the name field.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -64,5 +64,24 @@ class NewDeckViewController: UIViewController {
 
     @objc private func endEditing() {
         view.endEditing(true)
+    }
+}
+
+extension NewDeckViewController: UITextFieldDelegate, UITextViewDelegate {
+    private func setupFieldsDelegate() {
+        self.newDeckView.nameTextField.delegate = self
+        self.newDeckView.descriptionTextView.delegate = self
+        self.newDeckView.keywordsTextField.delegate = self
+        
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let customTextFiel = textField as? CustomTextField else { return false }
+        return customTextFiel.verifyField(shouldChangeCharactersIn: range, replacementString: string)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let customTextView = textView.superview as? CustomTextView else { return false }
+        return customTextView.verifyField(shouldChangeCharactersIn: range, replacementString: text)
     }
 }

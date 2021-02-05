@@ -18,6 +18,7 @@ class EditDeckViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFieldsDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,4 +57,23 @@ class EditDeckViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension EditDeckViewController: UITextFieldDelegate, UITextViewDelegate {
+    private func setupFieldsDelegate() {
+        self.editDeckview.nameTextField.delegate = self
+        self.editDeckview.descriptionTextView.delegate = self
+        self.editDeckview.keywordsTextField.delegate = self
+        
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let customTextFiel = textField as? CustomTextField else { return false }
+        return customTextFiel.verifyField(shouldChangeCharactersIn: range, replacementString: string)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let customTextView = textView.superview as? CustomTextView else { return false }
+        return customTextView.verifyField(shouldChangeCharactersIn: range, replacementString: text)
+    }
 }

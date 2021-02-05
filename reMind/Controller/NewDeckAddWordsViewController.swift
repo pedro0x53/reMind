@@ -38,11 +38,9 @@ class NewDeckAddWordsViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(saveAction))
-
     }
 
     @objc private func saveAction() {
-        print("Save Tapped!")
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
