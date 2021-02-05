@@ -23,7 +23,7 @@ class Config {
         homeController.tabBarItem = UITabBarItem(title: "Home", image: firstItemImageSymbol, tag: 0)
         let homeNav = generateBlurredNaviagationController(rootController: homeController)
 
-        let secondItemImageSymbol = UIImage(systemName: "arrow.triangle.2.circlepath", withConfiguration: boldWeight)
+        let secondItemImageSymbol = UIImage(systemName: "arrow.clockwise", withConfiguration: boldWeight)
         reviewController.tabBarItem = UITabBarItem(title: "Review", image: secondItemImageSymbol, tag: 1)
         let reviewNav = generateBlurredNaviagationController(rootController: reviewController)
         
