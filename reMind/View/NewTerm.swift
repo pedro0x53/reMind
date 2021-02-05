@@ -18,22 +18,11 @@ class NewTerm: UIView {
         return label
     }()
 
-    public let wordTextField: UITextField = {
+    public let wordTextField: CustomTextField = {
         let width = UIScreen.main.bounds.width - 40
-        let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-        textField.backgroundColor = .cultured
-        textField.borderStyle = .none
-
-        textField.padding(right: 10, left: 10)
-
-        var separator = CALayer()
-        separator.backgroundColor = UIColor.systemGray4.cgColor
-        separator.frame = CGRect(x: 0, y: textField.frame.height - 1,
-                                 width: width, height: 1)
-        textField.layer.addSublayer(separator)
-        textField.layer.masksToBounds = true
-        return textField
+        let customTextField = CustomTextField(frame: CGRect(x: 0, y: 0, width: width, height: 44))
+        customTextField.maxLength = 20
+        return customTextField
     }()
 
     private let meaningLabel: UILabel = {
@@ -45,21 +34,11 @@ class NewTerm: UIView {
         return label
     }()
 
-    public let meaningTextView: UITextView = {
+    public let meaningTextView: CustomTextView = {
         let width = UIScreen.main.bounds.width - 40
-        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: width, height: 100))
-        textView.isEditable = true
-        textView.backgroundColor = .cultured
-
-        textView.font = .systemFont(ofSize: 20, weight: .regular)
-
-        var separator = CALayer()
-        separator.backgroundColor = UIColor.systemGray4.cgColor
-        separator.frame = CGRect(x: 0, y: textView.frame.height - 1,
-                                 width: width, height: 1)
-        textView.layer.addSublayer(separator)
-        textView.layer.masksToBounds = true
-        return textView
+        let customTextView = CustomTextView(frame: CGRect(x: 0, y: 0, width: width, height: 100))
+        customTextView.maxLength = 100
+        return customTextView
     }()
 
     override init(frame: CGRect) {

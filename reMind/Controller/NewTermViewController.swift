@@ -22,6 +22,7 @@ class NewTermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFieldsDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,5 +83,22 @@ class NewTermViewController: UIViewController {
         if let delegate = self.delegate {
             delegate.callback()
         }
+    }
+}
+
+extension NewTermViewController: UITextFieldDelegate, UITextViewDelegate {
+    private func setupFieldsDelegate() {
+        self.newTerm.wordTextField.delegate = self
+        self.newTerm.meaningTextView.delegate = self
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let customTextFiel = textField as? CustomTextField else { return false }
+        return customTextFiel.verifyField(shouldChangeCharactersIn: range, replacementString: string)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let customTextView = textView.superview as? CustomTextView else { return false }
+        return customTextView.verifyField(shouldChangeCharactersIn: range, replacementString: text)
     }
 }
