@@ -11,6 +11,8 @@ class NewDeckViewController: UIViewController {
 
     private let newDeckView = NewDeck()
 
+    public weak var delegate: CallbackDelegate?
+
     override func loadView() {
         super.loadView()
         self.view = self.newDeckView
@@ -47,6 +49,8 @@ class NewDeckViewController: UIViewController {
 
     @objc private func saveAction() {
         if let name = newDeckView.nameTextField.text, !name.isEmpty {
+
+            self.delegate?.callback()
             self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Required Fields", message: "To create a deck you need to fill in at least the name field.", preferredStyle: .alert)

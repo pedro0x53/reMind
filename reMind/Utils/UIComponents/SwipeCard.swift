@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  SwipeCard.swift
 //  FlashCards
 //
 //  Created by Pedro Sousa on 20/10/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Card: UIView {
+class SwipeCard: UIView {
 
     public var showMeaning = false
     

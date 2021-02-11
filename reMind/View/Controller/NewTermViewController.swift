@@ -11,8 +11,6 @@ class NewTermViewController: UIViewController {
 
     private let newTerm = NewTerm()
 
-    private let coreDataManager = CoreDataManager.shared
-
     public weak var delegate: CallbackDelegate?
 
     override func loadView() {
@@ -63,8 +61,7 @@ class NewTermViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-        coreDataManager.createFlashCard(term: termStr, meaning: meaningStr)
+
         self.dismiss(animated: true, completion: { [unowned self] in
             dismissNewTerm()
         })

@@ -6,15 +6,14 @@
 //
 
 import UIKit
-import CoreData
 
 class EditiTermViewController: UIViewController {
 
     private let newTerm = NewTerm()
 
-    public var card: NSManagedObject?
+//    public var card: NSManagedObject?
 
-    private let coreDataManager = CoreDataManager.shared
+//    private let coreDataManager = CoreDataManager.shared
 
     override func loadView() {
         super.loadView()
@@ -50,10 +49,10 @@ class EditiTermViewController: UIViewController {
     @objc private func doneAction() {
         if let termStr = newTerm.wordTextField.text, !termStr.isEmpty,
            let meaningStr = newTerm.meaningTextView.textView.text, !meaningStr.isEmpty {
-            if let card = self.card {
-                card.setValue(termStr, forKey: "term")
-                card.setValue(meaningStr, forKey: "meaning")
-            }
+//            if let card = self.card {
+//                card.setValue(termStr, forKey: "term")
+//                card.setValue(meaningStr, forKey: "meaning")
+//            }
         } else {
             let alert = UIAlertController(title: "Required Fields", message: "Fill in all fields to save the alterations", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -62,7 +61,7 @@ class EditiTermViewController: UIViewController {
             return
         }
 
-        coreDataManager.updateContext()
+//        coreDataManager.updateContext()
 
         self.navigationController?.popViewController(animated: true)
     }
@@ -81,12 +80,12 @@ class EditiTermViewController: UIViewController {
     }
 
     private func setupTextFields() {
-        if let card = self.card {
-            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
-                self.newTerm.wordTextField.text = term
-                self.newTerm.meaningTextView.textView.text = meaning
-            }
-        }
+//        if let card = self.card {
+//            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
+//                self.newTerm.wordTextField.text = term
+//                self.newTerm.meaningTextView.textView.text = meaning
+//            }
+//        }
     }
 }
 

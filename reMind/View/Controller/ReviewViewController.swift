@@ -6,15 +6,10 @@
 //
 
 import UIKit
-import CoreData
 
 class ReviewViewController: UIViewController {
 
     private let review = Review(frame: UIScreen.main.bounds)
-
-    private var flashCards: [NSManagedObject] = []
-
-    private let coreDataManager = CoreDataManager.shared
 
     private var currentCardIndex = 0
 
@@ -35,9 +30,7 @@ class ReviewViewController: UIViewController {
         setupStopButton()
     }
 
-    private func loadTermsDataSource() {
-        self.flashCards = self.coreDataManager.readAllFlashCards()
-    }
+    private func loadTermsDataSource() {}
 
     private func setupStopButton() {
         self.review.stopButton.addTarget(self, action: #selector(stopReviewing), for: .touchUpInside)
@@ -48,18 +41,21 @@ class ReviewViewController: UIViewController {
     }
 
     private func setupCards() {
-        if flashCards.isEmpty {
-            currentCardIndex = 0
-            self.review.card.defaultSettings()
-        } else {
-            if currentCardIndex == flashCards.count {
-                currentCardIndex = 0
-            }
-            let card = flashCards[currentCardIndex]
-            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
-                self.review.card.configure(term: term, meaning: meaning)
-            }
-        }
+        currentCardIndex = 0
+        self.review.card.defaultSettings()
+        
+//        if flashCards.isEmpty {
+//            currentCardIndex = 0
+//            self.review.card.defaultSettings()
+//        } else {
+//            if currentCardIndex == flashCards.count {
+//                currentCardIndex = 0
+//            }
+//            let card = flashCards[currentCardIndex]
+//            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
+//                self.review.card.configure(term: term, meaning: meaning)
+//            }
+//        }
     }
 
     private func setupGestures() {
@@ -81,19 +77,19 @@ extension ReviewViewController {
     }
 
     private func updateCard() {
-        if !flashCards.isEmpty {
-            if currentCardIndex == flashCards.count {
-                currentCardIndex = 0
-            } else if currentCardIndex < 0 {
-                currentCardIndex = flashCards.count - 1
-            }
-
-            let flashCard = flashCards[currentCardIndex]
-
-            if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
-                self.review.card.configure(term: term, meaning: meaning)
-            }
-        }
+//        if !flashCards.isEmpty {
+//            if currentCardIndex == flashCards.count {
+//                currentCardIndex = 0
+//            } else if currentCardIndex < 0 {
+//                currentCardIndex = flashCards.count - 1
+//            }
+//
+//            let flashCard = flashCards[currentCardIndex]
+//
+//            if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
+//                self.review.card.configure(term: term, meaning: meaning)
+//            }
+//        }
 
         review.card.alpha = 0
         review.card.transform = .identity
@@ -117,7 +113,7 @@ extension ReviewViewController {
     }
 
     @objc private func panAction(_ gesture: UIPanGestureRecognizer) {
-        if let card = gesture.view as? Card {
+        if let card = gesture.view as? SwipeCard {
             let point = gesture.translation(in: view)
             
             card.center = CGPoint(x: view.center.x + point.x, y:  view.center.y + point.y)
@@ -138,7 +134,7 @@ extension ReviewViewController {
             }
             
             if gesture.state == .ended {
-                if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  && flashCards.count > 0 {
+                if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  /* && flashCards.count > 0*/ {
                     card.alpha = 0
                     self.currentCardIndex += 1
                     self.updateCard()

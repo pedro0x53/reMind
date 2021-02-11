@@ -67,9 +67,8 @@ class DecksCollectionCell: UICollectionViewCell {
         label.centerYAnchor.constraint(equalTo: frontCard.centerYAnchor).isActive = true
     }
 
-    public func configure() {
-        let colorID = Int.random(in: 1...3)
-        switch colorID {
+    public func configure(name: String, theme: Int) {
+        switch theme {
         case 1:
             self.frontCard.backgroundColor = .mauve
             self.backCard.backgroundColor = .mauveShadow
@@ -80,8 +79,11 @@ class DecksCollectionCell: UICollectionViewCell {
             self.frontCard.backgroundColor = .magicMint
             self.backCard.backgroundColor = .magicMintShadow
         default:
-            break
+            self.frontCard.backgroundColor = .mauve
+            self.backCard.backgroundColor = .mauveShadow
         }
+
+        self.label.text = name
     }
     
 }

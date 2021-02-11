@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
 
     private let homeView = Home()
 
+    private let viewModel: HomeViewModel = HomeViewModel()
+
     override func loadView() {
         super.loadView()
         self.view = homeView
@@ -69,24 +71,33 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        self.viewModel.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
+        guard let item = collectionView.dequeueReusableCell(
                 withReuseIdentifier: DecksCollectionCell.identifier, for: indexPath) as? DecksCollectionCell
         else {
             return UICollectionViewCell()
         }
 
-        cell.configure()
+        item.configure(name: self.viewModel.getName(for: indexPath.item), theme: self.viewModel.getTheme(for: indexPath.item))
 
-        return cell
+        return item
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = DeckInfoViewController()
+        let deck = self.viewModel.data(for: indexPath.item)
+        controller.viewModel.deck = deck
         self.navigationController?.pushViewController(controller, animated: true)
     }
    
+}
+
+extension HomeViewController: CallbackDelegate {
+    func callback() {
+        self.viewModel.loadDataSource()
+        self.homeView.decksCollection.reloadData()
+    }
 }

@@ -11,7 +11,7 @@ class DeckInfoViewController: UIViewController {
 
     private let deckInfoView: DeckInfo = DeckInfo()
 
-    private var deletedRows: Int = 0
+    let viewModel: DeckInfoViewModel = DeckInfoViewModel()
 
     override func loadView() {
         super.loadView()
@@ -82,7 +82,7 @@ class DeckInfoViewController: UIViewController {
 
 extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10 - deletedRows
+        self.viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,7 +119,8 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let controller = EditiTermViewController()
-//        controller.card = flashCards[indexPath.row]
+//        controller.card = self.viewModel.getData(for: indexPath.row)
+
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
         self.navigationController?.present(navController, animated: true)
@@ -127,11 +128,11 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            let card = flashCards[indexPath.row]
-//            self.coreDataManager.deleteFlashCard(card)
-//            self.flashCards.remove(at: indexPath.row)
-            deletedRows += 1
-            self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
+            if self.viewModel.deleteWord(for: indexPath.row) {
+                self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                print("Something went wrong when trying to delete Word.")
+            }
         }
     }
 }
