@@ -15,12 +15,12 @@ struct DeckData {
     var themeID: Int16
     var isShared: Bool
 
-    init(name: String, description: String, keywords: String) {
+    init(name: String, description: String, keywords: String, themeID: Int = Int.random(in: 0...3)) {
         self.identifier = UUID().uuidString
         self.name = name
         self.descriptionText = description
         self.keywords = keywords
-        self.themeID = Int16.random(in: 0...3)
+        self.themeID = Int16(themeID)
         self.isShared = false
     }
 }

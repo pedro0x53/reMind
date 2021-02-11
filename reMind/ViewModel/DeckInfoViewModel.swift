@@ -44,6 +44,20 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
     func numberOfRows() -> Int {
         return self.dataSource.count
     }
+
+    func getTitle() -> String {
+        return self.deck?.name ?? "Deck"
+    }
+
+    func getReviewNumber() -> Int {
+        guard let identifier = self.deck?.identifier else { return 0 }
+        return self.cardRepo.countForReview(forDeckID: identifier)
+    }
+
+    func getThemeID() -> Int {
+        guard let themeID = self.deck?.themeID else { return 0 }
+        return Int(themeID)
+    }
     
     func getData(for row: Int) -> Card {
         return self.dataSource[row]

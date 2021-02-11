@@ -9,6 +9,13 @@ import UIKit
 
 class CustomTextView: UIView {
 
+    var text: String? = "" {
+        didSet {
+            self.textView.text = text
+            self.maxLengthLabel.text = "\(self.maxLength - self.textView.text.count)"
+        }
+    }
+
     weak var delegate: UITextViewDelegate? {
         didSet {
             self.textView.delegate = self.delegate

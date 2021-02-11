@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewTerm: UIView {
+class ManageWord: UIView {
 
     private let wordLabel: UILabel = {
         let label = UILabel()

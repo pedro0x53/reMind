@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HomeViewModel: HomeViewModelProtocol {
+final class HomeViewModel: HomeViewModelProtocol {    
     typealias D = Deck
 
     private let repo: DeckRepository

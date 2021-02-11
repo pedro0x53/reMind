@@ -43,7 +43,7 @@ final class CardRepository: CardsRepositoryProtocol {
         card.nextRecallDate = data.nextRecallDate
         card.creationDate = data.creationDate
 
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
 
     func readAll() -> [Card] {
@@ -80,7 +80,7 @@ final class CardRepository: CardsRepositoryProtocol {
 
         let request = NSFetchRequest<Card>(entityName: CardRepository.entityName)
             request.predicate = NSPredicate(format: "deckIdentifier == %@ AND nextRecallDate == %@",
-                                            deckID, Calendar.current.getTodayDateString())
+                                            deckID, Calendar.current.getDateString(byAdding: 0))
 
         do {
             return try managedContext.fetch(request)
@@ -95,7 +95,7 @@ final class CardRepository: CardsRepositoryProtocol {
 
         let request = NSFetchRequest<Card>(entityName: CardRepository.entityName)
             request.predicate = NSPredicate(format: "deckIdentifier == %@ AND nextRecallDate == %@",
-                                            deckID, Calendar.current.getTodayDateString())
+                                            deckID, Calendar.current.getDateString(byAdding: 0))
 
         do {
             return try managedContext.count(for: request)
@@ -118,9 +118,10 @@ final class CardRepository: CardsRepositoryProtocol {
         entity.word = data.word
         entity.meaning = data.meaning
         
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
 
+    @discardableResult
     func delete(identifier: String) -> Bool {
         let record = self.read(identifier: identifier)
         
@@ -128,7 +129,7 @@ final class CardRepository: CardsRepositoryProtocol {
             self.coreDataStack.managedContext.delete(record)
         }
 
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
 
     @discardableResult
@@ -139,6 +140,11 @@ final class CardRepository: CardsRepositoryProtocol {
             managedContext.delete(record)
         }
 
+        return self.saveContext()
+    }
+
+    @discardableResult
+    func saveContext() -> Bool {
         return self.coreDataStack.saveContext()
     }
 }

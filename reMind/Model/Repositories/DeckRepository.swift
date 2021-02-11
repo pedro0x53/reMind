@@ -41,7 +41,7 @@ final class DeckRepository: RepositoryProtocol {
         deck.isShared = data.isShared
         deck.themeID = data.themeID
         
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
     
     func readAll() -> [Deck] {
@@ -71,9 +71,10 @@ final class DeckRepository: RepositoryProtocol {
         entity.keywords = data.keywords
         entity.themeID = data.themeID
         
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
-    
+
+    @discardableResult
     func delete(identifier: String) -> Bool {
         let record = self.read(identifier: identifier)
         
@@ -81,7 +82,7 @@ final class DeckRepository: RepositoryProtocol {
             self.coreDataStack.managedContext.delete(record)
         }
 
-        return self.coreDataStack.saveContext()
+        return self.saveContext()
     }
 
     @discardableResult
@@ -90,6 +91,11 @@ final class DeckRepository: RepositoryProtocol {
         for record in allRecords {
             self.coreDataStack.managedContext.delete(record)
         }
+        return self.saveContext()
+    }
+
+    @discardableResult
+    func saveContext() -> Bool {
         return self.coreDataStack.saveContext()
     }
     

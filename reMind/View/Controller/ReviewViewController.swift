@@ -11,6 +11,10 @@ class ReviewViewController: UIViewController {
 
     private let review = Review(frame: UIScreen.main.bounds)
 
+    private let viewModel = ReviewViewModel()
+
+    public weak var delegate: CallbackDelegate?
+
     private var currentCardIndex = 0
 
     override func loadView() {
@@ -20,7 +24,6 @@ class ReviewViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadTermsDataSource()
         setupCards()
         setupGestures()
     }
@@ -30,7 +33,9 @@ class ReviewViewController: UIViewController {
         setupStopButton()
     }
 
-    private func loadTermsDataSource() {}
+    func setDeckID(_ deckID: String) {
+        self.viewModel.deckID = deckID
+    }
 
     private func setupStopButton() {
         self.review.stopButton.addTarget(self, action: #selector(stopReviewing), for: .touchUpInside)
@@ -41,32 +46,13 @@ class ReviewViewController: UIViewController {
     }
 
     private func setupCards() {
-        currentCardIndex = 0
-        self.review.card.defaultSettings()
-        
-//        if flashCards.isEmpty {
-//            currentCardIndex = 0
-//            self.review.card.defaultSettings()
-//        } else {
-//            if currentCardIndex == flashCards.count {
-//                currentCardIndex = 0
-//            }
-//            let card = flashCards[currentCardIndex]
-//            if let term = card.value(forKey: "term") as? String, let meaning = card.value(forKey: "meaning") as? String {
-//                self.review.card.configure(term: term, meaning: meaning)
-//            }
-//        }
+        if let content = viewModel.getNexCardContent() {
+            self.review.card.configure(word: content.word, meaning: content.meaning)
+        }
     }
 
     private func setupGestures() {
         setupPanGesture()
-    }
-}
-
-extension ReviewViewController: CallbackDelegate {
-    func callback() {
-        loadTermsDataSource()
-        setupCards()
     }
 }
 
@@ -77,19 +63,19 @@ extension ReviewViewController {
     }
 
     private func updateCard() {
-//        if !flashCards.isEmpty {
-//            if currentCardIndex == flashCards.count {
-//                currentCardIndex = 0
-//            } else if currentCardIndex < 0 {
-//                currentCardIndex = flashCards.count - 1
-//            }
-//
-//            let flashCard = flashCards[currentCardIndex]
-//
-//            if let term = flashCard.value(forKey: "term") as? String, let meaning = flashCard.value(forKey: "meaning") as? String {
-//                self.review.card.configure(term: term, meaning: meaning)
-//            }
-//        }
+        if let content = viewModel.getNexCardContent() {
+            self.review.card.configure(word: content.word, meaning: content.meaning)
+        } else {
+            let alert = UIAlertController(title: "Review Completed!",
+                                          message: "You completed today's review.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+                self.delegate?.callback(.success)
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
 
         review.card.alpha = 0
         review.card.transform = .identity

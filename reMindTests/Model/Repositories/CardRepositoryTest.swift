@@ -59,11 +59,11 @@ class CardRepositoryTest: XCTestCase {
     func test_cardRepository_readAllForReview_2() {
         let deckID = "MockedID"
         let card1 = CardData(deckID: deckID, word: "Test 1", meaning: "Teste teste 1",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
         let card2 = CardData(deckID: deckID, word: "Test 2", meaning: "Teste teste 2",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
         let card3 = CardData(deckID: "randomID", word: "Test 3", meaning: "Teste teste 3",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
 
         sut.create(with: card1)
         sut.create(with: card2)
@@ -78,11 +78,11 @@ class CardRepositoryTest: XCTestCase {
     func test_cardRepository_countForReview_2() {
         let deckID = "MockedID"
         let card1 = CardData(deckID: deckID, word: "Test 1", meaning: "Teste teste 1",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
         let card2 = CardData(deckID: deckID, word: "Test 2", meaning: "Teste teste 2",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
         let card3 = CardData(deckID: "randomID", word: "Test 3", meaning: "Teste teste 3",
-                             nextRecallDate: Calendar.current.getTodayDateString())
+                             nextRecallDate: Calendar.current.getDateString(byAdding: 0))
 
         sut.create(with: card1)
         sut.create(with: card2)

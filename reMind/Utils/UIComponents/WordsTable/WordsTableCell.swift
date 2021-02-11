@@ -42,7 +42,7 @@ class WordsTableCell: UITableViewCell {
         wordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 18).isActive = true
     }
 
-    public func configure() {
-        
+    public func configure(word: String) {
+        self.wordLabel.text = word
     }
 }

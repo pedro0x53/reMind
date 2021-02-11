@@ -8,24 +8,18 @@
 import Foundation
 
 extension Calendar {
-    func getTodayDateString() -> String {
+    func getDateString(byAdding days: Int) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
 
         let today = Date()
-    
-        return formatter.string(from: today)
-    }
+        if days == 0 {
+            return formatter.string(from: today)
+        }
 
-    func getTomorowDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-
-        let today = Date()
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+        let newDate = Calendar.current.date(byAdding: .day, value: days, to: today)!
     
-        return formatter.string(from: tomorrow)
+        return formatter.string(from: newDate)
     }
 }

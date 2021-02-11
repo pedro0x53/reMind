@@ -105,8 +105,8 @@ class SwipeCard: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
-    public func configure(term: String, meaning: String) {
-        self.termLabel.text = term
+    public func configure(word: String, meaning: String) {
+        self.termLabel.text = word
         self.meaningLabel.text = meaning
     }
 

@@ -17,6 +17,7 @@ protocol RepositoryProtocol {
     func update(_ entity: E, with data: D) -> Bool
     func delete(identifier: String) -> Bool
     func drop() -> Bool
+    func saveContext() -> Bool
 }
 
 protocol CardsRepositoryProtocol: RepositoryProtocol {

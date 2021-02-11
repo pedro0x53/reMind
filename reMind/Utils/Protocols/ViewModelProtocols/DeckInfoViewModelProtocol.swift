@@ -9,12 +9,15 @@ import Foundation
 
 protocol DeckInfoViewModelProtocol {
     associatedtype C
-    associatedtype D
 
-    var deck: D? { get set }
+    var deck: Deck? { get set }
 
     func loadDataSource()
     func numberOfRows() -> Int
+    func getReviewNumber() -> Int
+    func getThemeID() -> Int
+    func getTitle() -> String
+
     func getData(for row: Int) -> C
     func getWord(for row: Int) -> String
 

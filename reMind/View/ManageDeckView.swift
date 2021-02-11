@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewDeck: UIView {
+class ManageDeckView: UIView {
 
     private let nameLabel: UILabel = {
         let label = UILabel()

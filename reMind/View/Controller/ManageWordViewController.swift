@@ -1,5 +1,5 @@
 //
-//  NewTermViewController.swift
+//  ManageWordViewController.swift
 //  FlashCards
 //
 //  Created by Pedro Sousa on 20/10/20.
@@ -7,15 +7,17 @@
 
 import UIKit
 
-class NewTermViewController: UIViewController {
+class ManageWordViewController: UIViewController {
 
-    private let newTerm = NewTerm()
+    private let manageWord = ManageWord()
+
+    private var viewModel = ManageWordViewModel()
 
     public weak var delegate: CallbackDelegate?
 
     override func loadView() {
         super.loadView()
-        self.view = self.newTerm
+        self.view = self.manageWord
     }
 
     override func viewDidLoad() {
@@ -32,13 +34,8 @@ class NewTermViewController: UIViewController {
     private func setupNavBar() {
         self.title = "New Word"
 
-        if self.isModal {
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
-            self.navigationController?.navigationBar.topItem?.leftBarButtonItem = cancelButton
-        } else {
-            let backButton = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        }
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelAction))
+        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = cancelButton
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
                                                             style: .done,
@@ -51,20 +48,40 @@ class NewTermViewController: UIViewController {
     }
 
     @objc private func saveAction() {
-        guard let termStr = newTerm.wordTextField.text else { return }
-        guard let meaningStr = newTerm.wordTextField.text else { return }
+        guard let wordStr = manageWord.wordTextField.text else { return }
+        guard let meaningStr = manageWord.meaningTextView.textView.text else { return }
 
-        if termStr.isEmpty || meaningStr.isEmpty {
-            let alert = UIAlertController(title: "Required Fields", message: "Fill in all fields to save the card", preferredStyle: .alert)
+        if wordStr.isEmpty || meaningStr.isEmpty {
+            let alert = UIAlertController(title: "Required Fields", message: "Fill in all fields to save the new word", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
             return
+        } else {
+            if self.viewModel.setCardWith(word: wordStr, meaning: meaningStr) {
+                self.delegate?.callback(.success)
+            } else {
+                self.delegate?.callback(.failure)
+            }
         }
 
-        self.dismiss(animated: true, completion: { [unowned self] in
-            dismissNewTerm()
-        })
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func setCard(_ card: Card) {
+        self.viewModel.card = card
+        fillForm()
+    }
+
+    func setDeckID(_ deckID: String) {
+        self.viewModel.deckID = deckID
+    }
+
+    private func fillForm() {
+        if let card = self.viewModel.card {
+            self.manageWord.wordTextField.text = card.word
+            self.manageWord.meaningTextView.text = card.meaning
+        }
     }
 
     private func setupGestures() {
@@ -75,18 +92,12 @@ class NewTermViewController: UIViewController {
     @objc private func endEditing() {
         view.endEditing(true)
     }
-
-    private func dismissNewTerm() {
-        if let delegate = self.delegate {
-            delegate.callback()
-        }
-    }
 }
 
-extension NewTermViewController: UITextFieldDelegate, UITextViewDelegate {
+extension ManageWordViewController: UITextFieldDelegate, UITextViewDelegate {
     private func setupFieldsDelegate() {
-        self.newTerm.wordTextField.delegate = self
-        self.newTerm.meaningTextView.delegate = self
+        self.manageWord.wordTextField.delegate = self
+        self.manageWord.meaningTextView.delegate = self
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
