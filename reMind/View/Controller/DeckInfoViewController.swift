@@ -179,6 +179,9 @@ extension DeckInfoViewController: CallbackDelegate {
             self.deckInfoView.tableView.reloadData()
         case .failure:
             print("Something went wrong when trying to create the word.")
+        case .destructive:
+            self.delegate?.callback(.destructive)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

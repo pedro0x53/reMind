@@ -25,6 +25,7 @@ class ManageDeckViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar()
+        editMode()
     }
 
     override func viewDidLoad() {
@@ -34,13 +35,8 @@ class ManageDeckViewController: UIViewController {
     }
 
     private func setupNavBar() {
-        if let _ = self.viewModel.deck {
-            self.title = "Edit Deck"
-        } else {
-            self.title = "New Deck"
-            self.manageDeckView.radioButtonsGroup.select(at: 0)
-            
-        }
+        self.title = "New Deck"
+        self.manageDeckView.radioButtonsGroup.selectedIndex = 0
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain,
                                                                 target: self, action: #selector(cancelAction))
@@ -76,6 +72,32 @@ class ManageDeckViewController: UIViewController {
         }
     }
 
+    private func editMode() {
+        if let deck = viewModel.deck {
+            self.title = "Edit Deck"
+            self.manageDeckView.radioButtonsGroup.selectedIndex = Int(deck.themeID)
+            self.manageDeckView.deleteButton.isHidden = false
+            self.manageDeckView.deleteButton.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
+        }
+    }
+
+    @objc func deleteAction() {
+        guard let deck = self.viewModel.deck else { return }
+        let title = "Delete \"\(deck.name!)\"?"
+        let alert = UIAlertController(title: title,
+                                      message: "Deleting this decke will remove it and it's words permanently.",
+                                      preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            self.viewModel.deleteDeck()
+            self.delegate?.callback(.destructive)
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
     private func setupGestures() {
         let endEditingGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         view.addGestureRecognizer(endEditingGesture)
@@ -95,7 +117,7 @@ class ManageDeckViewController: UIViewController {
             self.manageDeckView.nameTextField.text = deck.name
             self.manageDeckView.descriptionTextView.text = deck.descriptionText
             self.manageDeckView.keywordsTextField.text = deck.keywords
-            self.manageDeckView.radioButtonsGroup.select(at: Int(deck.themeID))
+            self.manageDeckView.radioButtonsGroup.selectedIndex = Int(deck.themeID)
         }
     }
 

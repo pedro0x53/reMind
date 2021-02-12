@@ -8,7 +8,7 @@
 import Foundation
 
 enum ResultType {
-    case success, failure
+    case success, failure, destructive
 }
 
 protocol CallbackDelegate: AnyObject {

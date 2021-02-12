@@ -133,6 +133,17 @@ final class CardRepository: CardsRepositoryProtocol {
     }
 
     @discardableResult
+    func deleteAll(forDeckID deckID: String) -> Bool {
+        let managedContext = self.coreDataStack.managedContext
+        let records = readAll(forDeckID: deckID)
+        for record in records {
+            managedContext.delete(record)
+        }
+
+        return self.saveContext()
+    }
+
+    @discardableResult
     func drop() -> Bool {
         let managedContext = self.coreDataStack.managedContext
         let records = self.readAll()
