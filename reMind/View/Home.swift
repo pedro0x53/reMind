@@ -9,12 +9,6 @@ import UIKit
 
 class Home: UIView {
 
-//    private let segmentedCrontrol: UISegmentedControl = {
-//        let segmentedControl = UISegmentedControl(items: ["All", "My Decks", "Shared"])
-//        segmentedControl.selectedSegmentIndex = 0
-//        return segmentedControl
-//    }()
-
     public let decksCollection = DecksCollection()
 
     private let backgroundImage: UIImageView = {

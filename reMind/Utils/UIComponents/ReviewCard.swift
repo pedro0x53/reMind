@@ -53,7 +53,20 @@ class ReviewCard: UIView {
         reviewButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
-    public func configure() {}
+    public func configure(number: Int, themeID: Int) {
+        switch themeID {
+        case 0:
+            self.reviewButton.backgroundColor = .mauve
+        case 1:
+            self.reviewButton.backgroundColor = .lavanderBlue
+        case 2:
+            self.reviewButton.backgroundColor = .magicMint
+        default:
+            self.reviewButton.backgroundColor = .mauve
+        }
+
+        self.titleLabel.text = "\(number) items to review"
+    }
 
     public func setReviewButtonAction(target: Any?, action: Selector) {
         self.reviewButton.addTarget(target, action: action, for: .touchUpInside)

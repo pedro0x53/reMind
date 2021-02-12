@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
+        <attribute name="deckIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="meaning" optional="YES" attributeType="String"/>
+        <attribute name="nextRecallDate" optional="YES" attributeType="String"/>
+        <attribute name="recall" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
+        <attribute name="descriptionText" attributeType="String" defaultValueString=""/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="isShared" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="keywords" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ownerID" optional="YES" attributeType="String"/>
+        <attribute name="themeID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Card" positionX="-54" positionY="45" width="128" height="134"/>
+        <element name="Deck" positionX="-63" positionY="-18" width="128" height="134"/>
+    </elements>
+</model>

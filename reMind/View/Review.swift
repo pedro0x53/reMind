@@ -30,9 +30,9 @@ class Review: UIView {
         return label
     }()
 
-    public let card: Card = {
+    public let card: SwipeCard = {
         let width = UIScreen.main.bounds.width * 0.9
-        let card = Card(frame: CGRect(x: 0, y: 0, width: width, height: width + 50))
+        let card = SwipeCard(frame: CGRect(x: 0, y: 0, width: width, height: width + 50))
         return card
     }()
 

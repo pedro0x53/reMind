@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum ResultType {
+    case success, failure
+}
+
 protocol CallbackDelegate: AnyObject {
-    func callback()
+    func callback(_ result: ResultType)
 }

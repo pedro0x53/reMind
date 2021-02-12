@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewDeck: UIView {
+class ManageDeckView: UIView {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -56,6 +56,40 @@ class NewDeck: UIView {
         label.text = "Separated by “,” (comma). E.g. english, grammar"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         return label
+    }()
+
+    private let themeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Theme"
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        return label
+    }()
+
+    let radioButtonsGroup: RadioButtonGroup = {
+        let stack = RadioButtonGroup()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        return stack
+    }()
+
+    public let mauveThemeButton: RadioButton = {
+        let button = RadioButton(width: 35)
+        button.backgroundColor = .mauve
+        return button
+    }()
+
+    public let mintThemeButton: RadioButton = {
+        let button = RadioButton(width: 35)
+        button.backgroundColor = .magicMint
+        return button
+    }()
+
+    public let lavaderThemeButton: RadioButton = {
+        let button = RadioButton(width: 35)
+        button.backgroundColor = .lavanderBlue
+        return button
     }()
 
     override init(frame: CGRect) {
@@ -111,5 +145,19 @@ class NewDeck: UIView {
         keywordsFootnote.topAnchor.constraint(equalTo: keywordsTextField.bottomAnchor, constant: 3).isActive = true
         keywordsFootnote.leadingAnchor.constraint(equalTo: keywordsTextField.leadingAnchor).isActive = true
         keywordsFootnote.trailingAnchor.constraint(equalTo: keywordsTextField.trailingAnchor).isActive = true
+
+        self.addSubview(themeLabel)
+        themeLabel.translatesAutoresizingMaskIntoConstraints = false
+        themeLabel.topAnchor.constraint(equalTo: keywordsFootnote.bottomAnchor, constant: 20).isActive = true
+        themeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+
+        self.addSubview(radioButtonsGroup)
+        radioButtonsGroup.translatesAutoresizingMaskIntoConstraints = false
+        radioButtonsGroup.topAnchor.constraint(equalTo: themeLabel.bottomAnchor, constant: 15).isActive = true
+        radioButtonsGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+
+        radioButtonsGroup.addRadioButton(mauveThemeButton)
+        radioButtonsGroup.addRadioButton(lavaderThemeButton)
+        radioButtonsGroup.addRadioButton(mintThemeButton)
     }
 }

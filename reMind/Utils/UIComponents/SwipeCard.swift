@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  SwipeCard.swift
 //  FlashCards
 //
 //  Created by Pedro Sousa on 20/10/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Card: UIView {
+class SwipeCard: UIView {
 
     public var showMeaning = false
     
@@ -105,9 +105,24 @@ class Card: UIView {
         self.addGestureRecognizer(tapGesture)
     }
 
-    public func configure(term: String, meaning: String) {
-        self.termLabel.text = term
+    public func configure(word: String, meaning: String, theme: Int) {
+        self.termLabel.text = word
         self.meaningLabel.text = meaning
+
+        switch theme {
+        case 0:
+            self.front.backgroundColor = .mauve
+            self.back.backgroundColor = .mauveShadow
+        case 1:
+            self.front.backgroundColor = .lavanderBlue
+            self.back.backgroundColor = .lavanderBlueShadow
+        case 2:
+            self.front.backgroundColor = .magicMint
+            self.back.backgroundColor = .magicMintShadow
+        default:
+            self.front.backgroundColor = .mauve
+            self.back.backgroundColor = .mauveShadow
+        }
     }
 
     public func defaultSettings() {

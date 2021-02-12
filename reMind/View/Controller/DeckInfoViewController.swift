@@ -11,11 +11,22 @@ class DeckInfoViewController: UIViewController {
 
     private let deckInfoView: DeckInfo = DeckInfo()
 
-    private var deletedRows: Int = 0
+    private let viewModel: DeckInfoViewModel = DeckInfoViewModel()
+
+    var hasEdits: Bool = false
+
+    weak var delegate: CallbackDelegate?
 
     override func loadView() {
         super.loadView()
         self.view = self.deckInfoView
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent && self.hasEdits {
+            self.delegate?.callback(.success)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -29,14 +40,23 @@ class DeckInfoViewController: UIViewController {
         setupReviewCard()
     }
 
+    func setDeck(_ deck: Deck) {
+        self.viewModel.deck = deck
+        self.title = self.viewModel.getTitle()
+
+        self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
+                                               themeID: self.viewModel.getThemeID())
+        
+        self.viewModel.loadDataSource()
+        self.deckInfoView.tableView.reloadData()
+    }
+
     private func setupTableView() {
         self.deckInfoView.tableView.delegate = self
         self.deckInfoView.tableView.dataSource = self
     }
 
     private func setupNavBar() {
-        self.title = "Deck Name"
-
         let semiboldWeight = UIImage.SymbolConfiguration(weight: .semibold)
 
         let editSymbol = UIImage(systemName: "square.and.pencil", withConfiguration: semiboldWeight)
@@ -45,44 +65,46 @@ class DeckInfoViewController: UIViewController {
                                          target: self,
                                          action: #selector(editAction))
 
-        let shareSymbol = UIImage(systemName: "square.and.arrow.up", withConfiguration: semiboldWeight)
-        let shareButton = UIBarButtonItem(image: shareSymbol,
-                                          style: .plain,
-                                          target: self,
-                                          action: #selector(shareAction))
-
-        self.navigationItem.rightBarButtonItems = [editButton, shareButton]
-    }
-
-    @objc private func shareAction() {
-        let alert = UIAlertController(title: "Oops!", message: "We are still working on this functionality.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        self.navigationItem.rightBarButtonItems = [editButton]
     }
 
     @objc private func editAction() {
-        let controller = EditDeckViewController()
+        let controller = ManageDeckViewController()
+        controller.delegate = self
+        if let deck = self.viewModel.deck {
+            controller.setDeck(deck)
+        }
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
         self.present(navController, animated: true, completion: nil)
     }
 
     private func setupReviewCard() {
-        self.deckInfoView.reviewCard.configure()
         self.deckInfoView.reviewCard.setReviewButtonAction(target: self, action: #selector(startReview))
     }
 
     @objc private func startReview() {
-        let controller = ReviewViewController()
-        controller.modalPresentationStyle = .overFullScreen
-        self.navigationController?.present(controller, animated: true, completion: nil)
+        if self.viewModel.getReviewNumber() > 0 {
+            guard let identifier = self.viewModel.deck?.identifier else { return }
+            let controller = ReviewViewController()
+            controller.setDeckID(identifier)
+            controller.theme = self.viewModel.getThemeID()
+            controller.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(controller, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Nothing to review",
+                                          message: "There's nothing to review today.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
 extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10 - deletedRows
+        self.viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,11 +113,11 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
                 for: indexPath) as? WordsTableCell
         else {
             let cell = WordsTableCell()
-            cell.configure()
+            cell.configure(word: self.viewModel.getWord(for: indexPath.row))
             return cell
         }
 
-        cell.configure()
+        cell.configure(word: self.viewModel.getWord(for: indexPath.row))
         return cell
     }
 
@@ -110,28 +132,53 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     @objc private func addButtonAction() {
-        let controller = NewTermViewController()
+        let controller = ManageWordViewController()
+        controller.delegate = self
+        if let deck = self.viewModel.deck {
+            controller.setDeckID(deck.identifier!)
+        }
+        
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
+
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let controller = EditiTermViewController()
-//        controller.card = flashCards[indexPath.row]
+        let controller = ManageWordViewController()
+        controller.setCard(self.viewModel.getData(for: indexPath.row))
+
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
+
         self.navigationController?.present(navController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            let card = flashCards[indexPath.row]
-//            self.coreDataManager.deleteFlashCard(card)
-//            self.flashCards.remove(at: indexPath.row)
-            deletedRows += 1
-            self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
+            if self.viewModel.deleteWord(for: indexPath.row) {
+                self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                print("Something went wrong when trying to delete the word.")
+            }
+        }
+    }
+}
+
+extension DeckInfoViewController: CallbackDelegate {
+    func callback(_ result: ResultType) {
+        switch result {
+        case .success:
+            self.hasEdits = true
+            self.viewModel.reloadDeck()
+            self.viewModel.loadDataSource()
+            self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
+                                                   themeID: self.viewModel.getThemeID())
+                
+            self.deckInfoView.tableView.reloadData()
+        case .failure:
+            print("Something went wrong when trying to create the word.")
         }
     }
 }

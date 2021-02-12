@@ -9,6 +9,12 @@ import UIKit
 
 class CustomTextField: UITextField {
 
+    override var text: String? {
+        didSet {
+            self.maxLengthLabel.text = "\(self.maxLength - (self.text?.count ?? 0))"
+        }
+    }
+
     public var maxLength = 0 {
         didSet {
             self.maxLengthLabel.text = "\(self.maxLength)"
@@ -57,6 +63,7 @@ class CustomTextField: UITextField {
         self.leftViewMode = .always
     }
 
+    @discardableResult
     public func verifyField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = self.text ?? ""
         
