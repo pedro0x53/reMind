@@ -92,10 +92,12 @@ extension HomeViewController: CallbackDelegate {
     func callback(_ result: ResultType) {
         switch result {
         case .success:
+            fallthrough
+        case .destructive:
             self.viewModel.loadDataSource()
             self.homeView.decksCollection.reloadData()
         case .failure:
-            print("Error")
+            print("HomeViewController Error - Callback delegate: Undefined Error")
         }
     }
 }

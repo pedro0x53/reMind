@@ -21,6 +21,7 @@ protocol RepositoryProtocol {
 }
 
 protocol CardsRepositoryProtocol: RepositoryProtocol {
+    func deleteAll(forDeckID deckID: String) -> Bool
     func readAll(forDeckID deckID: String) -> [E]
     func readAllForReview(forDeckID deckID: String) -> [E]
     func countForReview(forDeckID deckID: String) -> Int

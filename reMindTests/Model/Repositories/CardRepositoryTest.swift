@@ -138,6 +138,17 @@ class CardRepositoryTest: XCTestCase {
         XCTAssertTrue(output)
     }
 
+    func test_cardRepository_deleteAllForDeckID_true() {
+        let data1 = CardData(deckID: "MockID", word: "Word", meaning: "Meaning")
+        let data2 = CardData(deckID: "MockID", word: "Word", meaning: "Meaning")
+    
+        sut.create(with: data1)
+        sut.create(with: data2)
+        let output = sut.deleteAll(forDeckID: "MockID")
+
+        XCTAssertTrue(output)
+    }
+
     func test_cardRepository_drop_true() {
         let result = sut.drop()
 

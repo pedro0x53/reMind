@@ -37,4 +37,9 @@ final class ManageWordViewModel: ManageWordViewModelProtocol {
         return false
     }
 
+    @discardableResult
+    func deleteWord() -> Bool {
+        guard let card = self.card else { return true }
+        return self.repo.delete(identifier: card.identifier!)
+    }
 }

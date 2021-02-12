@@ -11,4 +11,5 @@ protocol ManageWordViewModelProtocol {
     var card: Card? { get set }
     
     func setCardWith(word: String, meaning: String) -> Bool
+    func deleteWord() -> Bool
 }

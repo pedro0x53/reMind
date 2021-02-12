@@ -92,6 +92,15 @@ class ManageDeckView: UIView {
         return button
     }()
 
+    public let deleteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Delete Word", for: .normal)
+        button.setTitleColor(.systemRed, for: .normal)
+        button.backgroundColor = UIColor.cultured
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -159,5 +168,13 @@ class ManageDeckView: UIView {
         radioButtonsGroup.addRadioButton(mauveThemeButton)
         radioButtonsGroup.addRadioButton(lavaderThemeButton)
         radioButtonsGroup.addRadioButton(mintThemeButton)
+
+        self.addSubview(deleteButton)
+        deleteButton.isHidden = true
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        deleteButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

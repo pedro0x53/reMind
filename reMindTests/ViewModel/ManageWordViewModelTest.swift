@@ -37,6 +37,16 @@ class ManageWordViewModelTest: XCTestCase {
         XCTAssertTrue(output)
     }
 
+    func test_menageWordViewModel_deleteWord_true() {
+        let data = CardData(deckID: "MockID", word: "Mock", meaning: "Mock")
+        repo.create(with: data)
+        sut.card = repo.read(identifier: data.identifier)
+
+        let output = sut.deleteWord()
+
+        XCTAssertTrue(output)
+    }
+
     override func tearDown() {
         repo.drop()
         repo = nil

@@ -37,6 +37,16 @@ class ManageDeckViewModelTest: XCTestCase {
         XCTAssertTrue(output)
     }
 
+    func test_menageWordViewModel_deleteDeck_true() {
+        let data = DeckData(name: "Mock", description: "Mocked deck", keywords: "mock", themeID: 0)
+        repo.create(with: data)
+        sut.deck = repo.read(identifier: data.identifier)
+
+        let output = sut.deleteDeck()
+
+        XCTAssertTrue(output)
+    }
+
     override func tearDown() {
         repo.drop()
         repo = nil

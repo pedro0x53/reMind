@@ -9,7 +9,11 @@ import UIKit
 
 class RadioButtonGroup: UIStackView {
 
-    private var selectedIndex: Int?
+    var selectedIndex: Int? {
+        didSet {
+            self.select(at: self.selectedIndex!)
+        }
+    }
 
     weak var delegate: RadioButtonGroupDelegate?
 
@@ -28,14 +32,14 @@ class RadioButtonGroup: UIStackView {
         }
     }
 
-    @discardableResult
-    func select(at index: Int) -> Bool {
-        if arrangedSubviews.count >= index {
-            guard let radioButom = self.arrangedSubviews[index] as? RadioButton else { return false }
-            radioButom.isChecked = true
-            self.selectedIndex = index
+    private func select(at index: Int) {
+        for radioButton in self.arrangedSubviews {
+            if let radioButton = radioButton as? RadioButton {
+                radioButton.isChecked = false
+            }
         }
-        return false
+        guard let radioButom = self.arrangedSubviews[index] as? RadioButton else { return }
+        radioButom.isChecked = true
     }
 
     func addRadioButton(_ radioButton: RadioButton) {

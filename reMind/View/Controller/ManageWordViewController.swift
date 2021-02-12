@@ -29,6 +29,7 @@ class ManageWordViewController: UIViewController {
         super.viewWillAppear(animated)
         setupGestures()
         setupNavBar()
+        editMode()
     }
 
     private func setupNavBar() {
@@ -71,6 +72,29 @@ class ManageWordViewController: UIViewController {
     func setCard(_ card: Card) {
         self.viewModel.card = card
         fillForm()
+    }
+
+    private func editMode() {
+        if let _ = viewModel.card {
+            self.title = "Edit Word"
+            self.manageWord.deleteButton.isHidden = false
+            self.manageWord.deleteButton.addTarget(self, action: #selector(deleteAction), for: .touchUpInside)
+        }
+    }
+
+    @objc func deleteAction() {
+        guard let card = self.viewModel.card else { return }
+        let message = "Delete \"\(card.word!)\"?"
+        let alert = UIAlertController(title: message, message: "Deleting this word will remove it permanently.", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            self.viewModel.deleteWord()
+            self.delegate?.callback(.success)
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
     func setDeckID(_ deckID: String) {
