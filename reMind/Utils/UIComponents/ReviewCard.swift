@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum CardStyle {
-    case active, disabled
-}
-
 class ReviewCard: UIView {
 
     private let titleLabel: UILabel = {
@@ -57,17 +53,13 @@ class ReviewCard: UIView {
         reviewButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
-    public func configure(number: Int, themeID: Int, style: CardStyle) {
-        if style == .disabled {
-            self.reviewButton.backgroundColor = .systemGray4
-        }
-
+    public func configure(number: Int, themeID: Int) {
         switch themeID {
-        case 1:
+        case 0:
             self.reviewButton.backgroundColor = .mauve
-        case 2:
+        case 1:
             self.reviewButton.backgroundColor = .lavanderBlue
-        case 3:
+        case 2:
             self.reviewButton.backgroundColor = .magicMint
         default:
             self.reviewButton.backgroundColor = .mauve

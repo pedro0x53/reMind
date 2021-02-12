@@ -13,6 +13,8 @@ class ManageDeckViewController: UIViewController {
 
     public weak var delegate: CallbackDelegate?
 
+    private var currentTheme: Int = 0
+
     private let manageDeckView = ManageDeckView()
 
     override func loadView() {
@@ -54,10 +56,15 @@ class ManageDeckViewController: UIViewController {
             let descriptionText = manageDeckView.descriptionTextView.textView.text
             let keywordsText = manageDeckView.keywordsTextField.text
             
-            if self.viewModel.setDeckWith(name: name, description: descriptionText!, keywords: keywordsText!) {
-                self.delegate?.callback(.success)
+            if self.viewModel.setDeckWith(name: name, description: descriptionText!,
+                                          keywords: keywordsText!, themeID: self.currentTheme) {
+                if let delegate = self.delegate {
+                    delegate.callback(.success)
+                }
             } else {
-                self.delegate?.callback(.failure)
+                if let delegate = self.delegate {
+                    delegate.callback(.failure)
+                }
             }
 
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -86,6 +93,7 @@ class ManageDeckViewController: UIViewController {
             self.manageDeckView.nameTextField.text = deck.name
             self.manageDeckView.descriptionTextView.text = deck.descriptionText
             self.manageDeckView.keywordsTextField.text = deck.keywords
+            self.manageDeckView.radioButtonsGroup.select(at: Int(deck.themeID))
         }
     }
 
@@ -100,11 +108,12 @@ class ManageDeckViewController: UIViewController {
     }
 }
 
-extension ManageDeckViewController: UITextFieldDelegate, UITextViewDelegate {
+extension ManageDeckViewController: UITextFieldDelegate, UITextViewDelegate, RadioButtonGroupDelegate {
     private func setupFieldsDelegate() {
         self.manageDeckView.nameTextField.delegate = self
         self.manageDeckView.descriptionTextView.delegate = self
         self.manageDeckView.keywordsTextField.delegate = self
+        self.manageDeckView.radioButtonsGroup.delegate = self
         
     }
 
@@ -116,5 +125,9 @@ extension ManageDeckViewController: UITextFieldDelegate, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let customTextView = textView.superview as? CustomTextView else { return false }
         return customTextView.verifyField(shouldChangeCharactersIn: range, replacementString: text)
+    }
+
+    func didSelect(at index: Int) {
+        self.currentTheme = index
     }
 }

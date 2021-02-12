@@ -13,9 +13,20 @@ class DeckInfoViewController: UIViewController {
 
     private let viewModel: DeckInfoViewModel = DeckInfoViewModel()
 
+    var hasEdits: Bool = false
+
+    weak var delegate: CallbackDelegate?
+
     override func loadView() {
         super.loadView()
         self.view = self.deckInfoView
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent && self.hasEdits {
+            self.delegate?.callback(.success)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +44,8 @@ class DeckInfoViewController: UIViewController {
         self.viewModel.deck = deck
         self.title = self.viewModel.getTitle()
 
-        var style: CardStyle = .active
-        if self.viewModel.getReviewNumber() == 0 {
-            style = .disabled
-        }
         self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
-                                               themeID: self.viewModel.getThemeID(),
-                                               style: style)
+                                               themeID: self.viewModel.getThemeID())
         
         self.viewModel.loadDataSource()
         self.deckInfoView.tableView.reloadData()
@@ -64,6 +70,7 @@ class DeckInfoViewController: UIViewController {
 
     @objc private func editAction() {
         let controller = ManageDeckViewController()
+        controller.delegate = self
         if let deck = self.viewModel.deck {
             controller.setDeck(deck)
         }
@@ -81,6 +88,7 @@ class DeckInfoViewController: UIViewController {
             guard let identifier = self.viewModel.deck?.identifier else { return }
             let controller = ReviewViewController()
             controller.setDeckID(identifier)
+            controller.theme = self.viewModel.getThemeID()
             controller.modalPresentationStyle = .overFullScreen
             self.navigationController?.present(controller, animated: true, completion: nil)
         } else {
@@ -162,7 +170,12 @@ extension DeckInfoViewController: CallbackDelegate {
     func callback(_ result: ResultType) {
         switch result {
         case .success:
+            self.hasEdits = true
+            self.viewModel.reloadDeck()
             self.viewModel.loadDataSource()
+            self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
+                                                   themeID: self.viewModel.getThemeID())
+                
             self.deckInfoView.tableView.reloadData()
         case .failure:
             print("Something went wrong when trying to create the word.")

@@ -13,6 +13,8 @@ class ReviewViewController: UIViewController {
 
     private let viewModel = ReviewViewModel()
 
+    var theme: Int = 0
+
     public weak var delegate: CallbackDelegate?
 
     private var currentCardIndex = 0
@@ -47,7 +49,7 @@ class ReviewViewController: UIViewController {
 
     private func setupCards() {
         if let content = viewModel.getNexCardContent() {
-            self.review.card.configure(word: content.word, meaning: content.meaning)
+            self.review.card.configure(word: content.word, meaning: content.meaning, theme: self.theme)
         }
     }
 
@@ -64,7 +66,7 @@ extension ReviewViewController {
 
     private func updateCard() {
         if let content = viewModel.getNexCardContent() {
-            self.review.card.configure(word: content.word, meaning: content.meaning)
+            self.review.card.configure(word: content.word, meaning: content.meaning, theme: self.theme)
         } else {
             let alert = UIAlertController(title: "Review Completed!",
                                           message: "You completed today's review.",

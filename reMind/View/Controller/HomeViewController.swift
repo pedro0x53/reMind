@@ -80,6 +80,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = DeckInfoViewController()
+        controller.delegate = self
         let deck = self.viewModel.data(for: indexPath.item)
         controller.setDeck(deck)
         self.navigationController?.pushViewController(controller, animated: true)

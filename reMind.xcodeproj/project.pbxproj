@@ -46,6 +46,9 @@
 		FEA7EDB625D5D25D003DE257 /* ReviewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDB525D5D25D003DE257 /* ReviewViewModelProtocol.swift */; };
 		FEA7EDBC25D5D2C6003DE257 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDBB25D5D2C6003DE257 /* ReviewViewModel.swift */; };
 		FEA7EDC225D5D8A1003DE257 /* ReviewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDC125D5D8A1003DE257 /* ReviewViewModelTest.swift */; };
+		FEA7EDCA25D5FA36003DE257 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDC925D5FA36003DE257 /* RadioButton.swift */; };
+		FEA7EDCE25D60048003DE257 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDCD25D60048003DE257 /* RadioButtonGroup.swift */; };
+		FEA7EDDA25D605C3003DE257 /* RadioButtonGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7EDD925D605C3003DE257 /* RadioButtonGroupDelegate.swift */; };
 		FEBB022225CC339B00208E33 /* ReviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB022125CC339B00208E33 /* ReviewCard.swift */; };
 		FEBB022625CC375700208E33 /* WordsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB022525CC375700208E33 /* WordsTable.swift */; };
 		FEBB022925CC376E00208E33 /* WordsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB022825CC376E00208E33 /* WordsTableCell.swift */; };
@@ -118,6 +121,9 @@
 		FEA7EDB525D5D25D003DE257 /* ReviewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModelProtocol.swift; sourceTree = "<group>"; };
 		FEA7EDBB25D5D2C6003DE257 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		FEA7EDC125D5D8A1003DE257 /* ReviewViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModelTest.swift; sourceTree = "<group>"; };
+		FEA7EDC925D5FA36003DE257 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		FEA7EDCD25D60048003DE257 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
+		FEA7EDD925D605C3003DE257 /* RadioButtonGroupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroupDelegate.swift; sourceTree = "<group>"; };
 		FEBB022125CC339B00208E33 /* ReviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCard.swift; sourceTree = "<group>"; };
 		FEBB022525CC375700208E33 /* WordsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTable.swift; sourceTree = "<group>"; };
 		FEBB022825CC376E00208E33 /* WordsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTableCell.swift; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 				FEBB022125CC339B00208E33 /* ReviewCard.swift */,
 				FE33936C25CD7A4A0037270E /* CustomTextField.swift */,
 				FE33937025CD84B20037270E /* CustomTextView.swift */,
+				FEA7EDC925D5FA36003DE257 /* RadioButton.swift */,
+				FEA7EDCD25D60048003DE257 /* RadioButtonGroup.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -239,8 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				FEFB98DA25CB2575006A1DF8 /* HomeViewController.swift */,
-				FE5655C425CB6E130066EE02 /* ManageDeckViewController.swift */,
 				FEBB023125CC408400208E33 /* DeckInfoViewController.swift */,
+				FE5655C425CB6E130066EE02 /* ManageDeckViewController.swift */,
 				FE1A1CA0253F48DB00B2E4B6 /* ManageWordViewController.swift */,
 				FE5270D7253EFB4500DEEC87 /* ReviewViewController.swift */,
 				FEBB024225CC81E800208E33 /* Default404ViewController.swift */,
@@ -294,6 +302,7 @@
 				FE7AA54325D4164800239FB6 /* RepositoriesProtocols */,
 				FE7AA54225D4162B00239FB6 /* ViewModelProtocols */,
 				FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */,
+				FEA7EDD925D605C3003DE257 /* RadioButtonGroupDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -503,6 +512,7 @@
 				FE33937125CD84B20037270E /* CustomTextView.swift in Sources */,
 				FEBB022925CC376E00208E33 /* WordsTableCell.swift in Sources */,
 				FEFB98D825CB200E006A1DF8 /* DecksCollectionCell.swift in Sources */,
+				FEA7EDCA25D5FA36003DE257 /* RadioButton.swift in Sources */,
 				FE33936D25CD7A4A0037270E /* CustomTextField.swift in Sources */,
 				FEBB022F25CC3DE000208E33 /* WordsTableHeader.swift in Sources */,
 				FEA7EDBC25D5D2C6003DE257 /* ReviewViewModel.swift in Sources */,
@@ -513,6 +523,7 @@
 				FE88210325D170EE001A6334 /* DeckRepository.swift in Sources */,
 				FEBB024325CC81E800208E33 /* Default404ViewController.swift in Sources */,
 				FEBB022C25CC3B5C00208E33 /* DeckInfo.swift in Sources */,
+				FEA7EDDA25D605C3003DE257 /* RadioButtonGroupDelegate.swift in Sources */,
 				FE0EADA025D5520A00EE881F /* Calendar.swift in Sources */,
 				FE7E79F72541CA570065AC6C /* CallbackDelegate.swift in Sources */,
 				FEBB022225CC339B00208E33 /* ReviewCard.swift in Sources */,
@@ -521,6 +532,7 @@
 				FE88210825D17131001A6334 /* DeckData.swift in Sources */,
 				FE8820FF25D16D49001A6334 /* ReMind.xcdatamodeld in Sources */,
 				FE5270BF253EFAEA00DEEC87 /* SceneDelegate.swift in Sources */,
+				FEA7EDCE25D60048003DE257 /* RadioButtonGroup.swift in Sources */,
 				FEFB98D025CB1E2B006A1DF8 /* Home.swift in Sources */,
 				FE8820FB25D161B6001A6334 /* RepositoryProtocol.swift in Sources */,
 				FE0EAD8025D4196300EE881F /* ManageDeckViewModel.swift in Sources */,
@@ -693,6 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = TF4K4YZ8PT;
 				INFOPLIST_FILE = reMind/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -713,6 +726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.3;
 				DEVELOPMENT_TEAM = TF4K4YZ8PT;
 				INFOPLIST_FILE = reMind/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

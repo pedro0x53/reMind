@@ -12,7 +12,7 @@ class ManageDeckViewModelTest: XCTestCase {
 
     var sut: ManageDeckViewModel!
     var repo: DeckRepository!
-    var mockedDeckData = DeckData(name: "Mock", description: "Mocked deck", keywords: "mock")
+    var mockedDeckData = DeckData(name: "Mock", description: "Mocked deck", keywords: "mock", themeID: 0)
 
     override func setUp() {
         super.setUp()
@@ -25,14 +25,14 @@ class ManageDeckViewModelTest: XCTestCase {
 
     func test_manageDeckViewModel_setDeckWith_create_true() {
         sut.deck = nil
-        let output = sut.setDeckWith(name: "Teste", description: "Teste teste", keywords: "teste, teste")
+        let output = sut.setDeckWith(name: "Teste", description: "Teste teste", keywords: "teste, teste", themeID: 0)
 
         XCTAssertTrue(output)
     }
 
     func test_manageDeckViewModel_setDeckWith_update_true() {
         sut.deck = repo.read(identifier: mockedDeckData.identifier)
-        let output = sut.setDeckWith(name: "Mock Edited", description: "Mocked deck", keywords: "mock")
+        let output = sut.setDeckWith(name: "Mock Edited", description: "Mocked deck", keywords: "mock", themeID: 0)
 
         XCTAssertTrue(output)
     }

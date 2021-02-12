@@ -17,6 +17,8 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
         }
     }
 
+    var hasEdits: Bool = false
+
     private var dataSource: [Card] = []
 
     var reviewCout: Int = 0
@@ -32,6 +34,13 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
         default:
             self.deckRepo = DeckRepository.shared
             self.cardRepo = CardRepository.shared
+        }
+    }
+
+    func reloadDeck() {
+        if let deck = self.deck {
+            self.deck = self.deckRepo.read(identifier: deck.identifier!)
+            self.hasEdits = true
         }
     }
 
