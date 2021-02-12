@@ -38,6 +38,8 @@ class ManageDeckViewController: UIViewController {
             self.title = "Edit Deck"
         } else {
             self.title = "New Deck"
+            self.manageDeckView.radioButtonsGroup.select(at: 0)
+            
         }
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain,
