@@ -94,7 +94,7 @@ class ManageDeckView: UIView {
 
     public let deleteButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Delete Word", for: .normal)
+        button.setTitle("Delete Deck", for: .normal)
         button.setTitleColor(.systemRed, for: .normal)
         button.backgroundColor = UIColor.cultured
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)

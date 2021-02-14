@@ -15,9 +15,7 @@ class ReviewViewController: UIViewController {
 
     var theme: Int = 0
 
-    public weak var delegate: CallbackDelegate?
-
-    private var currentCardIndex = 0
+    public weak var delegate: DeckInfoDelegate?
 
     override func loadView() {
         super.loadView()
@@ -48,7 +46,7 @@ class ReviewViewController: UIViewController {
     }
 
     private func setupCards() {
-        if let content = viewModel.getNexCardContent() {
+        if let content = viewModel.getCardContent() {
             self.review.card.configure(word: content.word, meaning: content.meaning, theme: self.theme)
         }
     }
@@ -65,20 +63,6 @@ extension ReviewViewController {
     }
 
     private func updateCard() {
-        if let content = viewModel.getNexCardContent() {
-            self.review.card.configure(word: content.word, meaning: content.meaning, theme: self.theme)
-        } else {
-            let alert = UIAlertController(title: "Review Completed!",
-                                          message: "You completed today's review.",
-                                          preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
-                self.delegate?.callback(.success)
-                self.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-
         review.card.alpha = 0
         review.card.transform = .identity
         review.card.center.x = self.view.center.x
@@ -93,11 +77,26 @@ extension ReviewViewController {
             self.review.rememberLabel.alpha = 0
         })
 
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: { [unowned self] in
-                self.review.card.transform = .identity
-                self.review.card.alpha = 1
-        }, completion: nil)
+        if let content = viewModel.getCardContent() {
+            self.review.card.configure(word: content.word, meaning: content.meaning, theme: self.theme)
+
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+                options: .curveEaseOut, animations: { [unowned self] in
+                    self.review.card.transform = .identity
+                    self.review.card.alpha = 1
+            }, completion: nil)
+
+        } else {
+            let alert = UIAlertController(title: "Review Completed!",
+                                          message: "You completed today's review.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+                self.delegate?.updateReviewCard()
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     @objc private func panAction(_ gesture: UIPanGestureRecognizer) {
@@ -122,9 +121,17 @@ extension ReviewViewController {
             }
             
             if gesture.state == .ended {
-                if (card.center.x > (self.view.bounds.width + 20) || card.center.x < -20)  /* && flashCards.count > 0*/ {
+                if card.center.x > self.view.bounds.width + 20 {
                     card.alpha = 0
-                    self.currentCardIndex += 1
+
+                    self.viewModel.updateNextRecall(remembered: true)
+
+                    self.updateCard()
+                } else if card.center.x < -20 {
+                    card.alpha = 0
+
+                    self.viewModel.updateNextRecall(remembered: false)
+
                     self.updateCard()
                 } else {
                     UIView.animate(withDuration: 0.3) {

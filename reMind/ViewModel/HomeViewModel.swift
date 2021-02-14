@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class HomeViewModel: HomeViewModelProtocol {    
-    typealias D = Deck
+final class HomeViewModel: HomeViewModelProtocol {
+    var editingIndex: Int?
 
     private let repo: DeckRepository
     private var dataSource: [Deck] = []
@@ -25,6 +25,19 @@ final class HomeViewModel: HomeViewModelProtocol {
 
     func loadDataSource() {
         self.dataSource = self.repo.readAll()
+    }
+
+    func appendToDataSource(_ item: Deck) {
+        self.dataSource.insert(item, at: 0)
+    }
+    
+    func deleteFromDataSource() {
+        self.dataSource.remove(at: self.editingIndex!)
+    }
+
+    func updateDataSource(with item: Deck) {
+        self.dataSource.remove(at: self.editingIndex!)
+        self.dataSource.insert(item, at: self.editingIndex!)
     }
 
     func numberOfItems() -> Int {

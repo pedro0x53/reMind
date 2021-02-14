@@ -10,6 +10,6 @@ import Foundation
 protocol ManageDeckViewModelProtocol {
     var deck: Deck? { get set }
     
-    func setDeckWith(name: String, description: String, keywords: String, themeID: Int) -> Bool
+    func setDeckWith(name: String, description: String, keywords: String, themeID: Int) -> Deck?
     func deleteDeck() -> Bool
 }

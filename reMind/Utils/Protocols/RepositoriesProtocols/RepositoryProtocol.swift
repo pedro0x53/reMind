@@ -11,7 +11,7 @@ protocol RepositoryProtocol {
     associatedtype D
     associatedtype E
 
-    func create(with data: D) -> Bool
+    func create(with data: D) -> E?
     func readAll() -> [E]
     func read(identifier: String) -> E?
     func update(_ entity: E, with data: D) -> Bool

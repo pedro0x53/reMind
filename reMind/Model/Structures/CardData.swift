@@ -15,7 +15,7 @@ struct CardData {
     var nextRecallDate: String
     var creationDate: String
 
-    init(deckID: String = "", word: String, meaning: String, nextRecallDate: String = Calendar.current.getDateString(byAdding: 1)) {
+    init(deckID: String = "", word: String, meaning: String, nextRecallDate: String = Calendar.current.getDateString(byAdding: 0)) {
         self.identifier = UUID().uuidString
         self.deckID = deckID
         self.word = word

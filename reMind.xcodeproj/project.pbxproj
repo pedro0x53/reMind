@@ -20,6 +20,9 @@
 		FE1A1C9D253F2FA500B2E4B6 /* SwipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1C9C253F2FA500B2E4B6 /* SwipeCard.swift */; };
 		FE1A1CA1253F48DB00B2E4B6 /* ManageWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1CA0253F48DB00B2E4B6 /* ManageWordViewController.swift */; };
 		FE1A1CA4253F48EE00B2E4B6 /* ManageWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1A1CA3253F48EE00B2E4B6 /* ManageWord.swift */; };
+		FE26BEF625D9870600B4C445 /* ReviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE26BEF525D9870600B4C445 /* ReviewDelegate.swift */; };
+		FE26BEFA25D9897B00B4C445 /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE26BEF925D9897B00B4C445 /* HomeDelegate.swift */; };
+		FE26BF0025D99C8600B4C445 /* DeckInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE26BEFF25D99C8600B4C445 /* DeckInfoDelegate.swift */; };
 		FE33936D25CD7A4A0037270E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33936C25CD7A4A0037270E /* CustomTextField.swift */; };
 		FE33937125CD84B20037270E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33937025CD84B20037270E /* CustomTextView.swift */; };
 		FE5270BD253EFAEA00DEEC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5270BC253EFAEA00DEEC87 /* AppDelegate.swift */; };
@@ -56,8 +59,6 @@
 		FEBB022F25CC3DE000208E33 /* WordsTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB022E25CC3DE000208E33 /* WordsTableHeader.swift */; };
 		FEBB023225CC408400208E33 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB023125CC408400208E33 /* DeckInfoViewController.swift */; };
 		FEBB023625CC65C900208E33 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB023525CC65C900208E33 /* UIViewController.swift */; };
-		FEBB024025CC7F0600208E33 /* Default404.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB023F25CC7F0600208E33 /* Default404.swift */; };
-		FEBB024325CC81E800208E33 /* Default404ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB024225CC81E800208E33 /* Default404ViewController.swift */; };
 		FECD43A425D2B9CA002AA94F /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECD43A325D2B9CA002AA94F /* CoreDataStackTest.swift */; };
 		FED812EE25D3FEE2008B8DFB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED812ED25D3FEE2008B8DFB /* HomeViewModel.swift */; };
 		FEEF31FF25405CB400FFC7BB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF31FE25405CB400FFC7BB /* CoreDataStack.swift */; };
@@ -91,6 +92,9 @@
 		FE1A1C9C253F2FA500B2E4B6 /* SwipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCard.swift; sourceTree = "<group>"; };
 		FE1A1CA0253F48DB00B2E4B6 /* ManageWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWordViewController.swift; sourceTree = "<group>"; };
 		FE1A1CA3253F48EE00B2E4B6 /* ManageWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWord.swift; sourceTree = "<group>"; };
+		FE26BEF525D9870600B4C445 /* ReviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDelegate.swift; sourceTree = "<group>"; };
+		FE26BEF925D9897B00B4C445 /* HomeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
+		FE26BEFF25D99C8600B4C445 /* DeckInfoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoDelegate.swift; sourceTree = "<group>"; };
 		FE33936C25CD7A4A0037270E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		FE33937025CD84B20037270E /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		FE5270B9253EFAEA00DEEC87 /* reMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,8 +135,6 @@
 		FEBB022E25CC3DE000208E33 /* WordsTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsTableHeader.swift; sourceTree = "<group>"; };
 		FEBB023125CC408400208E33 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		FEBB023525CC65C900208E33 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		FEBB023F25CC7F0600208E33 /* Default404.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default404.swift; sourceTree = "<group>"; };
-		FEBB024225CC81E800208E33 /* Default404ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default404ViewController.swift; sourceTree = "<group>"; };
 		FECD43A325D2B9CA002AA94F /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTest.swift; sourceTree = "<group>"; };
 		FED812ED25D3FEE2008B8DFB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FEEF31FE25405CB400FFC7BB /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -237,7 +239,6 @@
 				FE5655C125CB66C80066EE02 /* ManageDeckView.swift */,
 				FE1A1CA3253F48EE00B2E4B6 /* ManageWord.swift */,
 				FE5270DB253EFB9B00DEEC87 /* Review.swift */,
-				FEBB023F25CC7F0600208E33 /* Default404.swift */,
 				FE5270D4253EFB0B00DEEC87 /* Controller */,
 			);
 			path = View;
@@ -251,7 +252,6 @@
 				FE5655C425CB6E130066EE02 /* ManageDeckViewController.swift */,
 				FE1A1CA0253F48DB00B2E4B6 /* ManageWordViewController.swift */,
 				FE5270D7253EFB4500DEEC87 /* ReviewViewController.swift */,
-				FEBB024225CC81E800208E33 /* Default404ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 			isa = PBXGroup;
 			children = (
 				FE9DFB8525D2DCD9005328B7 /* HomeViewModelProtocol.swift */,
-				FE0EAD8325D4197C00EE881F /* ManageDeckViewModelProtocol.swift */,
 				FE0EAD8725D42A1300EE881F /* DeckInfoViewModelProtocol.swift */,
+				FE0EAD8325D4197C00EE881F /* ManageDeckViewModelProtocol.swift */,
 				FEA7ED9B25D5B0E1003DE257 /* ManageWordViewModelProtocol.swift */,
 				FEA7EDB525D5D25D003DE257 /* ReviewViewModelProtocol.swift */,
 			);
@@ -303,6 +303,9 @@
 				FE7AA54225D4162B00239FB6 /* ViewModelProtocols */,
 				FE7E79F62541CA570065AC6C /* CallbackDelegate.swift */,
 				FEA7EDD925D605C3003DE257 /* RadioButtonGroupDelegate.swift */,
+				FE26BEF525D9870600B4C445 /* ReviewDelegate.swift */,
+				FE26BEF925D9897B00B4C445 /* HomeDelegate.swift */,
+				FE26BEFF25D99C8600B4C445 /* DeckInfoDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -519,9 +522,8 @@
 				FE5270DC253EFB9B00DEEC87 /* Review.swift in Sources */,
 				FE5655C225CB66C80066EE02 /* ManageDeckView.swift in Sources */,
 				FEEF31FF25405CB400FFC7BB /* CoreDataStack.swift in Sources */,
-				FEBB024025CC7F0600208E33 /* Default404.swift in Sources */,
 				FE88210325D170EE001A6334 /* DeckRepository.swift in Sources */,
-				FEBB024325CC81E800208E33 /* Default404ViewController.swift in Sources */,
+				FE26BEFA25D9897B00B4C445 /* HomeDelegate.swift in Sources */,
 				FEBB022C25CC3B5C00208E33 /* DeckInfo.swift in Sources */,
 				FEA7EDDA25D605C3003DE257 /* RadioButtonGroupDelegate.swift in Sources */,
 				FE0EADA025D5520A00EE881F /* Calendar.swift in Sources */,
@@ -530,7 +532,9 @@
 				FEA7ED9825D5B0C7003DE257 /* ManageWordViewModel.swift in Sources */,
 				FEA7EDB625D5D25D003DE257 /* ReviewViewModelProtocol.swift in Sources */,
 				FE88210825D17131001A6334 /* DeckData.swift in Sources */,
+				FE26BEF625D9870600B4C445 /* ReviewDelegate.swift in Sources */,
 				FE8820FF25D16D49001A6334 /* ReMind.xcdatamodeld in Sources */,
+				FE26BF0025D99C8600B4C445 /* DeckInfoDelegate.swift in Sources */,
 				FE5270BF253EFAEA00DEEC87 /* SceneDelegate.swift in Sources */,
 				FEA7EDCE25D60048003DE257 /* RadioButtonGroup.swift in Sources */,
 				FEFB98D025CB1E2B006A1DF8 /* Home.swift in Sources */,

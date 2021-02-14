@@ -29,7 +29,7 @@ final class DeckRepository: RepositoryProtocol {
     }
     
     @discardableResult
-    func create(with data: DeckData) -> Bool {
+    func create(with data: DeckData) -> Deck? {
         let managedContext = self.coreDataStack.managedContext
 
         let deck = Deck(context: managedContext)
@@ -41,7 +41,11 @@ final class DeckRepository: RepositoryProtocol {
         deck.isShared = data.isShared
         deck.themeID = data.themeID
         
-        return self.saveContext()
+        if self.saveContext() {
+            return deck
+        }
+
+        return nil
     }
     
     func readAll() -> [Deck] {

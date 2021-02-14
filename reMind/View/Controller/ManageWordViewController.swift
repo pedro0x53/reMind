@@ -13,7 +13,7 @@ class ManageWordViewController: UIViewController {
 
     private var viewModel = ManageWordViewModel()
 
-    public weak var delegate: CallbackDelegate?
+    public weak var delegate: DeckInfoDelegate?
 
     override func loadView() {
         super.loadView()
@@ -59,10 +59,10 @@ class ManageWordViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         } else {
-            if self.viewModel.setCardWith(word: wordStr, meaning: meaningStr) {
-                self.delegate?.callback(.success)
+            if let card = self.viewModel.setCardWith(word: wordStr, meaning: meaningStr) {
+                self.delegate?.updateTable(with: card)
             } else {
-                self.delegate?.callback(.failure)
+                self.delegate?.error()
             }
         }
 
@@ -88,7 +88,7 @@ class ManageWordViewController: UIViewController {
         let alert = UIAlertController(title: message, message: "Deleting this word will remove it permanently.", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.viewModel.deleteWord()
-            self.delegate?.callback(.success)
+            self.delegate?.updateTable(with: nil)
             self.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
