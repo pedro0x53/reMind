@@ -22,7 +22,7 @@ class DeckRepositoryTest: XCTestCase {
     func test_deckRepository_create_true() {
         let result = sut.create(with: data)
 
-        XCTAssertTrue(result)
+        XCTAssertNotNil(result)
     }
 
     func test_deckRepository_readAll_3() {

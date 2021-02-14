@@ -26,7 +26,7 @@ class ManageWordViewModelTest: XCTestCase {
         sut.deckID = "MockID"
         let output = sut.setCardWith(word: "New Mocked Word (Create)", meaning: "New meaning")
 
-        XCTAssertTrue(output)
+        XCTAssertNotNil(output)
     }
 
     func test_menageWordViewModel_setCardWith_update_true() {
@@ -34,7 +34,7 @@ class ManageWordViewModelTest: XCTestCase {
         sut.deckID = "MockID"
         let output = sut.setCardWith(word: "New Mocked Word (Update)", meaning: "New meaning")
 
-        XCTAssertTrue(output)
+        XCTAssertNotNil(output)
     }
 
     func test_menageWordViewModel_deleteWord_true() {

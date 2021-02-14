@@ -22,7 +22,7 @@ class CardRepositoryTest: XCTestCase {
 
         let output = sut.create(with: data)
 
-        XCTAssertTrue(output)
+        XCTAssertNotNil(output)
     }
 
     func test_cardRepository_readAll_3() {

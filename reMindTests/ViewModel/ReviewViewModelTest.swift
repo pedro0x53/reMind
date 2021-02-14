@@ -33,7 +33,7 @@ class ReviewViewModelTest: XCTestCase {
     }
 
     func test_reviewViewModel_getNexCardContent_notNil() {
-        let output = sut.getNexCardContent()
+        let output = sut.getCardContent()
 
         XCTAssertNotNil(output)
     }
@@ -44,7 +44,7 @@ class ReviewViewModelTest: XCTestCase {
         sut = ReviewViewModel(.inMemory)
         sut.deckID = "MockID"
 
-        let output = sut.getNexCardContent()
+        let output = sut.getCardContent()
 
         XCTAssertNil(output)
     }
@@ -52,9 +52,11 @@ class ReviewViewModelTest: XCTestCase {
     func test_reviewViewModel_updateNextRecall_true() {
         repo.create(with: card1)
 
-        let output = sut.updateNextRecall()
+        let output1 = sut.updateNextRecall(remembered: true)
+        let output2 = sut.updateNextRecall(remembered: false)
 
-        XCTAssertTrue(output)
+        XCTAssertTrue(output1)
+        XCTAssertTrue(output2)
     }
 
     override func tearDown() {

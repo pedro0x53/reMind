@@ -27,14 +27,14 @@ class ManageDeckViewModelTest: XCTestCase {
         sut.deck = nil
         let output = sut.setDeckWith(name: "Teste", description: "Teste teste", keywords: "teste, teste", themeID: 0)
 
-        XCTAssertTrue(output)
+        XCTAssertNotNil(output)
     }
 
     func test_manageDeckViewModel_setDeckWith_update_true() {
         sut.deck = repo.read(identifier: mockedDeckData.identifier)
         let output = sut.setDeckWith(name: "Mock Edited", description: "Mocked deck", keywords: "mock", themeID: 0)
 
-        XCTAssertTrue(output)
+        XCTAssertNotNil(output)
     }
 
     func test_menageWordViewModel_deleteDeck_true() {

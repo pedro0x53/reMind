@@ -71,10 +71,9 @@ class DeckInfoViewModelTest: XCTestCase {
     }
 
     func test_deckInfoViewModel_getWord_true() {
-        let expeted = "Word 1"
+        let expeted = "Word 3"
 
         let actual = sut.getWord(for: 0)
-        print(sut.numberOfRows())
 
         XCTAssertEqual(expeted, actual)
     }

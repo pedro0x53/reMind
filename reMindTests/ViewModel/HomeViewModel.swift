@@ -31,7 +31,7 @@ class HomeViewModelTest: XCTestCase {
     }
 
     func test_homeViewModel_getThemeID_2() {
-        let expected = 0
+        let expected = 2
 
         let actual = sut.getTheme(for: 2)
 
@@ -39,7 +39,7 @@ class HomeViewModelTest: XCTestCase {
     }
 
     func test_homeViewModel_getName_Teste1() {
-        let expected = "Teste 1"
+        let expected = "Teste 3"
         
         let actual = sut.getName(for: 0)
 
