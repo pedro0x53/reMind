@@ -9,6 +9,6 @@ import Foundation
 
 protocol ReviewViewModelProtocol {
     func loadDataSource()
-    func getNexCardContent() -> (word: String, meaning: String)?
-    func updateNextRecall() -> Bool
+    func getCardContent() -> (word: String, meaning: String)?
+    func updateNextRecall(remembered: Bool) -> Bool
 }

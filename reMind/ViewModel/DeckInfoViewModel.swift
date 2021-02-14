@@ -17,7 +17,7 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
         }
     }
 
-    var hasEdits: Bool = false
+    var editingIndex: Int?
 
     private var dataSource: [Card] = []
 
@@ -40,7 +40,6 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
     func reloadDeck() {
         if let deck = self.deck {
             self.deck = self.deckRepo.read(identifier: deck.identifier!)
-            self.hasEdits = true
         }
     }
 
@@ -48,6 +47,23 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
         if let deck = self.deck {
             self.dataSource = cardRepo.readAll(forDeckID: deck.identifier!)
         }
+    }
+
+    func appendToDataSource(_ item: Card) {
+        self.dataSource.insert(item, at: 0)
+    }
+    
+    func updateDataSource(with item: Card) {
+        if !dataSource.isEmpty {
+            self.dataSource.remove(at: self.editingIndex!)
+        }
+        self.dataSource.insert(item, at: self.editingIndex!)
+    }
+    
+    func deleteFromDataSource() {
+        let identifier = self.dataSource[self.editingIndex!].identifier!
+        self.cardRepo.delete(identifier: identifier)
+        self.dataSource.remove(at: self.editingIndex!)
     }
     
     func numberOfRows() -> Int {

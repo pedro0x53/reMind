@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
 
     @objc private func newDeck() {
         let controller = ManageDeckViewController()
-        controller.delegate = self
+        controller.homeDelegate = self
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
         self.navigationController?.present(navController, animated: true, completion: nil)
@@ -88,16 +88,24 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
    
 }
 
-extension HomeViewController: CallbackDelegate {
-    func callback(_ result: ResultType) {
-        switch result {
-        case .success:
-            fallthrough
-        case .destructive:
-            self.viewModel.loadDataSource()
-            self.homeView.decksCollection.reloadData()
-        case .failure:
-            print("HomeViewController Error - Callback delegate: Undefined Error")
+extension HomeViewController: HomeDelegate {
+    func updateCollection(with item: Deck?) {
+        if let deck = item {
+            if let index = self.viewModel.editingIndex {
+                self.viewModel.updateDataSource(with: deck)
+                self.homeView.decksCollection.reloadItems(at: [IndexPath(row: index, section: 0)])
+            } else {
+                self.viewModel.appendToDataSource(deck)
+                self.homeView.decksCollection.insertItems(at: [IndexPath(row: 0, section: 0)])
+            }
+        } else {
+            guard let index = self.viewModel.editingIndex else { return }
+            self.viewModel.deleteFromDataSource()
+            self.homeView.decksCollection.deleteItems(at: [IndexPath(row: index, section: 0)])
         }
+    }
+
+    func error() {
+        
     }
 }

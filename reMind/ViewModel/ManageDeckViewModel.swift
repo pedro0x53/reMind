@@ -24,12 +24,17 @@ final class ManageDeckViewModel: ManageDeckViewModelProtocol {
         }
     }
 
-    func setDeckWith(name: String, description: String, keywords: String, themeID: Int) -> Bool {
+    func setDeckWith(name: String, description: String, keywords: String, themeID: Int) -> Deck? {
         let data = DeckData(name: name, description: description, keywords: keywords, themeID: themeID)
         if let deck = self.deck {
-            return self.deckRepo.update(deck, with: data)
+            if self.deckRepo.update(deck, with: data) {
+                return deck
+            }
         }
-        return self.deckRepo.create(with: data)
+        if let deck = self.deckRepo.create(with: data) {
+            return deck
+        }
+        return nil
     }
 
     @discardableResult

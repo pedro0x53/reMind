@@ -11,7 +11,8 @@ class ManageDeckViewController: UIViewController {
     
     private let viewModel = ManageDeckViewModel()
 
-    public weak var delegate: CallbackDelegate?
+    public weak var homeDelegate: HomeDelegate?
+    public weak var deckInfoDelegate: DeckInfoDelegate?
 
     private var currentTheme: Int = 0
 
@@ -54,15 +55,19 @@ class ManageDeckViewController: UIViewController {
             let descriptionText = manageDeckView.descriptionTextView.textView.text
             let keywordsText = manageDeckView.keywordsTextField.text
             
-            if self.viewModel.setDeckWith(name: name, description: descriptionText!,
+            if let deck = self.viewModel.setDeckWith(name: name, description: descriptionText!,
                                           keywords: keywordsText!, themeID: self.currentTheme) {
-                if let delegate = self.delegate {
-                    delegate.callback(.success)
+
+                if let delegate = self.homeDelegate {
+                    delegate.updateCollection(with: deck)
                 }
+
+                if let delegate = self.deckInfoDelegate {
+                    delegate.updateInfo(with: deck)
+                }
+
             } else {
-                if let delegate = self.delegate {
-                    delegate.callback(.failure)
-                }
+                
             }
 
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -89,7 +94,11 @@ class ManageDeckViewController: UIViewController {
                                       preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.viewModel.deleteDeck()
-            self.delegate?.callback(.destructive)
+
+            if let delegate = self.deckInfoDelegate {
+                delegate.deleted()
+            }
+            
             self.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)

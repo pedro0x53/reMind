@@ -24,17 +24,19 @@ final class ManageWordViewModel: ManageWordViewModelProtocol {
         }
     }
     
-    func setCardWith(word: String, meaning: String) -> Bool {
+    func setCardWith(word: String, meaning: String) -> Card? {
         if let card = self.card {
             let data = CardData(word: word, meaning: meaning)
-            return self.repo.update(card, with: data)
+            if self.repo.update(card, with: data) {
+                return card
+            }
         } else {
             if let deckID = self.deckID {
                 let data = CardData(deckID: deckID, word: word, meaning: meaning)
                 return self.repo.create(with: data)
             }
         }
-        return false
+        return nil
     }
 
     @discardableResult

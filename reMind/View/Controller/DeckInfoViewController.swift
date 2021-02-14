@@ -15,7 +15,7 @@ class DeckInfoViewController: UIViewController {
 
     var hasEdits: Bool = false
 
-    weak var delegate: CallbackDelegate?
+    weak var delegate: HomeDelegate?
 
     override func loadView() {
         super.loadView()
@@ -25,7 +25,7 @@ class DeckInfoViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if self.isMovingFromParent && self.hasEdits {
-            self.delegate?.callback(.success)
+            self.delegate?.updateCollection(with: self.viewModel.deck)
         }
     }
 
@@ -37,15 +37,14 @@ class DeckInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupReviewCard()
+        setupReviewCardAction()
     }
 
     func setDeck(_ deck: Deck) {
         self.viewModel.deck = deck
         self.title = self.viewModel.getTitle()
 
-        self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
-                                               themeID: self.viewModel.getThemeID())
+        setupReviewCardLayout()
         
         self.viewModel.loadDataSource()
         self.deckInfoView.tableView.reloadData()
@@ -70,7 +69,7 @@ class DeckInfoViewController: UIViewController {
 
     @objc private func editAction() {
         let controller = ManageDeckViewController()
-        controller.delegate = self
+        controller.deckInfoDelegate = self
         if let deck = self.viewModel.deck {
             controller.setDeck(deck)
         }
@@ -79,7 +78,12 @@ class DeckInfoViewController: UIViewController {
         self.present(navController, animated: true, completion: nil)
     }
 
-    private func setupReviewCard() {
+    private func setupReviewCardLayout() {
+        self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
+                                               themeID: self.viewModel.getThemeID())
+    }
+
+    private func setupReviewCardAction() {
         self.deckInfoView.reviewCard.setReviewButtonAction(target: self, action: #selector(startReview))
     }
 
@@ -90,6 +94,9 @@ class DeckInfoViewController: UIViewController {
             controller.setDeckID(identifier)
             controller.theme = self.viewModel.getThemeID()
             controller.modalPresentationStyle = .overFullScreen
+
+            controller.delegate = self
+
             self.navigationController?.present(controller, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Nothing to review",
@@ -137,6 +144,8 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
         if let deck = self.viewModel.deck {
             controller.setDeckID(deck.identifier!)
         }
+
+        self.viewModel.editingIndex = nil
         
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
@@ -146,8 +155,12 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        self.viewModel.editingIndex = indexPath.row
+
         let controller = ManageWordViewController()
         controller.setCard(self.viewModel.getData(for: indexPath.row))
+        controller.delegate = self
 
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
@@ -157,31 +170,48 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if self.viewModel.deleteWord(for: indexPath.row) {
-                self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
-            } else {
-                print("Something went wrong when trying to delete the word.")
-            }
+            self.viewModel.editingIndex = indexPath.row
+            self.viewModel.deleteFromDataSource()
+            self.setupReviewCardLayout()
+            self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
 
-extension DeckInfoViewController: CallbackDelegate {
-    func callback(_ result: ResultType) {
-        switch result {
-        case .success:
-            self.hasEdits = true
-            self.viewModel.reloadDeck()
-            self.viewModel.loadDataSource()
-            self.deckInfoView.reviewCard.configure(number: self.viewModel.getReviewNumber(),
-                                                   themeID: self.viewModel.getThemeID())
-                
-            self.deckInfoView.tableView.reloadData()
-        case .failure:
-            print("Something went wrong when trying to create the word.")
-        case .destructive:
-            self.delegate?.callback(.destructive)
-            self.navigationController?.popViewController(animated: true)
+extension DeckInfoViewController: DeckInfoDelegate {
+    func updateTable(with item: Card?) {
+        if let card = item {
+            if let index = self.viewModel.editingIndex {
+                self.viewModel.updateDataSource(with: card)
+                self.viewModel.editingIndex = nil
+                self.deckInfoView.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+            } else {
+                self.viewModel.appendToDataSource(card)
+                self.deckInfoView.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
+        } else {
+            guard let index = self.viewModel.editingIndex else { return }
+            self.viewModel.deleteFromDataSource()
+            self.viewModel.editingIndex = nil
+            self.deckInfoView.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
+    }
+
+    func updateInfo(with deck: Deck) {
+        self.viewModel.deck = deck
+        self.title = viewModel.getTitle()
+    }
+
+    func deleted() {
+        self.delegate?.updateCollection(with: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    func updateReviewCard() {
+        self.setupReviewCardLayout()
+    }
+
+    func error() {
+        
     }
 }

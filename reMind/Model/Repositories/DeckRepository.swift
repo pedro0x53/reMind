@@ -29,7 +29,7 @@ final class DeckRepository: RepositoryProtocol {
     }
     
     @discardableResult
-    func create(with data: DeckData) -> Bool {
+    func create(with data: DeckData) -> Deck? {
         let managedContext = self.coreDataStack.managedContext
 
         let deck = Deck(context: managedContext)
@@ -40,14 +40,19 @@ final class DeckRepository: RepositoryProtocol {
         deck.keywords = data.keywords
         deck.isShared = data.isShared
         deck.themeID = data.themeID
+        deck.creationDate = Date()
         
-        return self.saveContext()
+        if self.saveContext() {
+            return deck
+        }
+
+        return nil
     }
     
     func readAll() -> [Deck] {
         let managedContext = self.coreDataStack.managedContext
         let request = NSFetchRequest<Deck>(entityName: DeckRepository.entityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
         do {
             return try managedContext.fetch(request)

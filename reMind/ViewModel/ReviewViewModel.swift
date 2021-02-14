@@ -34,21 +34,27 @@ final class ReviewViewModel: ReviewViewModelProtocol {
         }
     }
 
-    func getNexCardContent() -> (word: String, meaning: String)? {
-        _ = self.dataSourece.dropFirst()
-
+    func getCardContent() -> (word: String, meaning: String)? {
         guard let first = self.dataSourece.first else { return nil }
+
         guard let word = first.word else { return nil }
         guard let meaning = first.meaning else { return nil }
 
         return (word: word, meaning: meaning)
     }
-    
-    func updateNextRecall() -> Bool {
+
+    @discardableResult
+    func updateNextRecall(remembered: Bool) -> Bool {
         guard let card = self.dataSourece.first else { return true }
 
-        if card.recall < 7 {
-            card.recall += 1
+        _ = self.dataSourece.removeFirst()
+
+        if card.recall >= 0 && card.recall < 7 {
+            if remembered {
+                card.recall += 1
+            } else {
+                card.recall -= 1
+            }
         }
 
         card.nextRecallDate = Calendar.current.getDateString(byAdding: Int(card.recall))

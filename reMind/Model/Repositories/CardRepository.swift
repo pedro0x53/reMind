@@ -30,7 +30,7 @@ final class CardRepository: CardsRepositoryProtocol {
     }
 
     @discardableResult
-    func create(with data: CardData) -> Bool {
+    func create(with data: CardData) -> Card? {
         
         let managedContext = self.coreDataStack.managedContext
 
@@ -41,16 +41,20 @@ final class CardRepository: CardsRepositoryProtocol {
         card.meaning = data.meaning
         card.recall = 0
         card.nextRecallDate = data.nextRecallDate
-        card.creationDate = data.creationDate
+        card.creationDate = Date()
 
-        return self.saveContext()
+        if self.saveContext() {
+            return card
+        }
+
+        return nil
     }
 
     func readAll() -> [Card] {
         let managedContext = self.coreDataStack.managedContext
 
         let request = NSFetchRequest<Card>(entityName: CardRepository.entityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         do {
             return try managedContext.fetch(request)
@@ -65,7 +69,7 @@ final class CardRepository: CardsRepositoryProtocol {
 
         let request = NSFetchRequest<Card>(entityName: CardRepository.entityName)
         request.predicate = NSPredicate(format: "deckIdentifier == %@", deckID)
-        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         do {
             return try managedContext.fetch(request)

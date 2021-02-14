@@ -10,6 +10,6 @@ import Foundation
 protocol ManageWordViewModelProtocol {
     var card: Card? { get set }
     
-    func setCardWith(word: String, meaning: String) -> Bool
+    func setCardWith(word: String, meaning: String) -> Card?
     func deleteWord() -> Bool
 }
