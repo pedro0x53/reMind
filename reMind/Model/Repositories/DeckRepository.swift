@@ -40,6 +40,7 @@ final class DeckRepository: RepositoryProtocol {
         deck.keywords = data.keywords
         deck.isShared = data.isShared
         deck.themeID = data.themeID
+        deck.creationDate = Date()
         
         if self.saveContext() {
             return deck
@@ -51,7 +52,7 @@ final class DeckRepository: RepositoryProtocol {
     func readAll() -> [Deck] {
         let managedContext = self.coreDataStack.managedContext
         let request = NSFetchRequest<Deck>(entityName: DeckRepository.entityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
         do {
             return try managedContext.fetch(request)

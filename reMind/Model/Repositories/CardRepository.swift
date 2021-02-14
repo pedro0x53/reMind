@@ -41,7 +41,7 @@ final class CardRepository: CardsRepositoryProtocol {
         card.meaning = data.meaning
         card.recall = 0
         card.nextRecallDate = data.nextRecallDate
-        card.creationDate = data.creationDate
+        card.creationDate = Date()
 
         if self.saveContext() {
             return card
@@ -69,7 +69,7 @@ final class CardRepository: CardsRepositoryProtocol {
 
         let request = NSFetchRequest<Card>(entityName: CardRepository.entityName)
         request.predicate = NSPredicate(format: "deckIdentifier == %@", deckID)
-        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         do {
             return try managedContext.fetch(request)
