@@ -70,9 +70,10 @@ class DeckInfoViewController: UIViewController {
     @objc private func editAction() {
         let controller = ManageDeckViewController()
         controller.deckInfoDelegate = self
-        if let deck = self.viewModel.deck {
-            controller.setDeck(deck)
-        }
+
+        guard let deck = self.viewModel.deck else { return }
+        controller.setDeck(deck)
+
         let navController = UINavigationController(rootViewController: controller)
         navController.navigationBar.tintColor = .eerieBlack
         self.present(navController, animated: true, completion: nil)
@@ -172,6 +173,8 @@ extension DeckInfoViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.viewModel.editingIndex = indexPath.row
             self.viewModel.deleteFromDataSource()
+            self.viewModel.editingIndex = nil
+
             self.setupReviewCardLayout()
             self.deckInfoView.tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -198,6 +201,7 @@ extension DeckInfoViewController: DeckInfoDelegate {
     }
 
     func updateInfo(with deck: Deck) {
+        self.hasEdits = true
         self.viewModel.deck = deck
         self.title = viewModel.getTitle()
     }

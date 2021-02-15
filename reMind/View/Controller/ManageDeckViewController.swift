@@ -65,9 +65,6 @@ class ManageDeckViewController: UIViewController {
                 if let delegate = self.deckInfoDelegate {
                     delegate.updateInfo(with: deck)
                 }
-
-            } else {
-                
             }
 
             self.navigationController?.dismiss(animated: true, completion: nil)
@@ -94,7 +91,6 @@ class ManageDeckViewController: UIViewController {
                                       preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             self.viewModel.deleteDeck()
-
             if let delegate = self.deckInfoDelegate {
                 delegate.deleted()
             }
@@ -102,8 +98,8 @@ class ManageDeckViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alert.addAction(deleteAction)
         alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
         self.present(alert, animated: true, completion: nil)
     }
 

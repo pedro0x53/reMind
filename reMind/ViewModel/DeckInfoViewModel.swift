@@ -61,8 +61,6 @@ final class DeckInfoViewModel: DeckInfoViewModelProtocol {
     }
     
     func deleteFromDataSource() {
-        let identifier = self.dataSource[self.editingIndex!].identifier!
-        self.cardRepo.delete(identifier: identifier)
         self.dataSource.remove(at: self.editingIndex!)
     }
     

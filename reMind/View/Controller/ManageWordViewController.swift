@@ -61,8 +61,6 @@ class ManageWordViewController: UIViewController {
         } else {
             if let card = self.viewModel.setCardWith(word: wordStr, meaning: meaningStr) {
                 self.delegate?.updateTable(with: card)
-            } else {
-                self.delegate?.error()
             }
         }
 
@@ -87,7 +85,6 @@ class ManageWordViewController: UIViewController {
         let message = "Delete \"\(card.word!)\"?"
         let alert = UIAlertController(title: message, message: "Deleting this word will remove it permanently.", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-            self.viewModel.deleteWord()
             self.delegate?.updateTable(with: nil)
             self.dismiss(animated: true, completion: nil)
         }
