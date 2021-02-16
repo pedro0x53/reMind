@@ -94,8 +94,7 @@ class ManageDeckViewController: UIViewController {
             if let delegate = self.deckInfoDelegate {
                 delegate.deleted()
             }
-            
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancelAction)

@@ -208,7 +208,7 @@ extension DeckInfoViewController: DeckInfoDelegate {
 
     func deleted() {
         self.delegate?.updateCollection(with: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
 
     func updateReviewCard() {
