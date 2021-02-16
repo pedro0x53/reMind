@@ -19,7 +19,7 @@ class ManageDeckView: UIView {
     public let nameTextField: CustomTextField = {
         let width = UIScreen.main.bounds.width - 40
         let customTextField = CustomTextField(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-        customTextField.maxLength = 20
+        customTextField.maxLength = 35
         return customTextField
     }()
 
@@ -33,7 +33,7 @@ class ManageDeckView: UIView {
     public let descriptionTextView: CustomTextView = {
         let width = UIScreen.main.bounds.width - 40
         let customTextView = CustomTextView(frame: CGRect(x: 0, y: 0, width: width, height: 100))
-        customTextView.maxLength = 100
+        customTextView.maxLength = 150
         return customTextView
     }()
 
@@ -47,7 +47,7 @@ class ManageDeckView: UIView {
     public let keywordsTextField: CustomTextField = {
         let width = UIScreen.main.bounds.width - 40
         let customTextField = CustomTextField(frame: CGRect(x: 0, y: 0, width: width, height: 44))
-        customTextField.maxLength = 100
+        customTextField.maxLength = 150
         return customTextField
     }()
 

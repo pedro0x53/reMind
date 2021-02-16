@@ -64,7 +64,7 @@ class DeckInfoViewController: UIViewController {
                                          target: self,
                                          action: #selector(editAction))
 
-        self.navigationItem.rightBarButtonItems = [editButton]
+        self.navigationItem.rightBarButtonItem = editButton
     }
 
     @objc private func editAction() {
@@ -208,7 +208,7 @@ extension DeckInfoViewController: DeckInfoDelegate {
 
     func deleted() {
         self.delegate?.updateCollection(with: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
 
     func updateReviewCard() {

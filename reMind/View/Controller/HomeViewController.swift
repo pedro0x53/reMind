@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar()
+        self.viewModel.editingIndex = nil
     }
 
     override func viewDidLoad() {
