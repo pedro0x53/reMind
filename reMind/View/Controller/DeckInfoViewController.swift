@@ -64,7 +64,7 @@ class DeckInfoViewController: UIViewController {
                                          target: self,
                                          action: #selector(editAction))
 
-        self.navigationItem.rightBarButtonItems = [editButton]
+        self.navigationItem.rightBarButtonItem = editButton
     }
 
     @objc private func editAction() {

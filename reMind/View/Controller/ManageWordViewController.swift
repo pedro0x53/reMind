@@ -89,8 +89,8 @@ class ManageWordViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alert.addAction(deleteAction)
         alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
         self.present(alert, animated: true, completion: nil)
     }
 
