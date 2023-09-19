@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE3ABEC72A4F59D800432ED4 /* reRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEC62A4F59D800432ED4 /* reRadioButton.swift */; };
+		FE3ABECD2A4F5E8F00432ED4 /* reRadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABECC2A4F5E8F00432ED4 /* reRadioButtonGroup.swift */; };
+		FE3ABED02A4F65BC00432ED4 /* TermEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABECF2A4F65BC00432ED4 /* TermEditorView.swift */; };
+		FE3ABED22A4F680C00432ED4 /* reButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABED12A4F680C00432ED4 /* reButtonStyle.swift */; };
+		FE3ABED52A5326C200432ED4 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABED42A5326C200432ED4 /* BoxView.swift */; };
+		FE3ABED82A5328FD00432ED4 /* TodaysCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABED72A5328FD00432ED4 /* TodaysCardsView.swift */; };
+		FE3ABEDA2A532A4D00432ED4 /* reColorButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABED92A532A4D00432ED4 /* reColorButtonStyle.swift */; };
+		FE3ABEDF2A53522A00432ED4 /* SwipperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEDE2A53522A00432ED4 /* SwipperView.swift */; };
+		FE3ABEE22A53544B00432ED4 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEE12A53544B00432ED4 /* Box.swift */; };
+		FE3ABEE42A53545500432ED4 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEE32A53545500432ED4 /* Term.swift */; };
+		FE3ABEE62A5354AF00432ED4 /* reTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEE52A5354AF00432ED4 /* reTheme.swift */; };
+		FE3ABEE92A53563F00432ED4 /* SwipperLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3ABEE82A53563F00432ED4 /* SwipperLabel.swift */; };
+		FE5B807A2A4CB0DA00711F80 /* reBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B80792A4CB0DA00711F80 /* reBadge.swift */; };
+		FE6A9F9A2A461E2400A84FC9 /* reMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6A9F992A461E2400A84FC9 /* reMindApp.swift */; };
+		FE6A9F9C2A461E2400A84FC9 /* BoxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6A9F9B2A461E2400A84FC9 /* BoxesView.swift */; };
+		FE6A9F9E2A461E2500A84FC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6A9F9D2A461E2500A84FC9 /* Assets.xcassets */; };
+		FE6A9FA12A461E2500A84FC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6A9FA02A461E2500A84FC9 /* Preview Assets.xcassets */; };
+		FE6F11AD2A6059FD003511F3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6F11AC2A6059FD003511F3 /* CoreDataStack.swift */; };
+		FE6F11AF2A605A21003511F3 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6F11AE2A605A21003511F3 /* CoreDataModel.swift */; };
+		FE6F11B12A605A4C003511F3 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6F11B02A605A4C003511F3 /* NSObject.swift */; };
+		FE6F11B32A605A69003511F3 /* ActiveRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6F11B22A605A69003511F3 /* ActiveRecord.swift */; };
+		FE6F11B62A605AB9003511F3 /* reMind.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE6F11B42A605AB9003511F3 /* reMind.xcdatamodeld */; };
+		FEA517AA2A548FBC0004D9D1 /* SwipeReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA517A92A548FBC0004D9D1 /* SwipeReview.swift */; };
+		FEA517AE2A54963E0004D9D1 /* SwipperCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA517AD2A54963E0004D9D1 /* SwipperCard.swift */; };
+		FEDE8E052A4DFADE00EEF7EA /* reTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDE8E042A4DFADE00EEF7EA /* reTextField.swift */; };
+		FEDE8E072A4DFEBD00EEF7EA /* reTexFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDE8E062A4DFEBD00EEF7EA /* reTexFieldStyle.swift */; };
+		FEDE8E092A4DFFE100EEF7EA /* BoxEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDE8E082A4DFFE100EEF7EA /* BoxEditorView.swift */; };
+		FEDE8E0D2A4E037F00EEF7EA /* reTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDE8E0C2A4E037F00EEF7EA /* reTextEditor.swift */; };
+		FEE2DC732A4B5CE4006A535D /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE2DC722A4B5CE4006A535D /* Palette.swift */; };
+		FEE2DC752A4B6172006A535D /* reBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE2DC742A4B6172006A535D /* reBackground.swift */; };
+		FEE2DC782A4B70FA006A535D /* BoxCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE2DC772A4B70FA006A535D /* BoxCardView.swift */; };
+		FEEFCBBD2A65DAA400A61FE9 /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEFCBBC2A65DAA400A61FE9 /* BoxViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FE3ABEC62A4F59D800432ED4 /* reRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reRadioButton.swift; sourceTree = "<group>"; };
+		FE3ABECC2A4F5E8F00432ED4 /* reRadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reRadioButtonGroup.swift; sourceTree = "<group>"; };
+		FE3ABECF2A4F65BC00432ED4 /* TermEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermEditorView.swift; sourceTree = "<group>"; };
+		FE3ABED12A4F680C00432ED4 /* reButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reButtonStyle.swift; sourceTree = "<group>"; };
+		FE3ABED42A5326C200432ED4 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
+		FE3ABED72A5328FD00432ED4 /* TodaysCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysCardsView.swift; sourceTree = "<group>"; };
+		FE3ABED92A532A4D00432ED4 /* reColorButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reColorButtonStyle.swift; sourceTree = "<group>"; };
+		FE3ABEDE2A53522A00432ED4 /* SwipperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipperView.swift; sourceTree = "<group>"; };
+		FE3ABEE12A53544B00432ED4 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		FE3ABEE32A53545500432ED4 /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		FE3ABEE52A5354AF00432ED4 /* reTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reTheme.swift; sourceTree = "<group>"; };
+		FE3ABEE82A53563F00432ED4 /* SwipperLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipperLabel.swift; sourceTree = "<group>"; };
+		FE5B80792A4CB0DA00711F80 /* reBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reBadge.swift; sourceTree = "<group>"; };
+		FE6A9F962A461E2400A84FC9 /* reMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6A9F992A461E2400A84FC9 /* reMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reMindApp.swift; sourceTree = "<group>"; };
+		FE6A9F9B2A461E2400A84FC9 /* BoxesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxesView.swift; sourceTree = "<group>"; };
+		FE6A9F9D2A461E2500A84FC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE6A9FA02A461E2500A84FC9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FE6F11AC2A6059FD003511F3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FE6F11AE2A605A21003511F3 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		FE6F11B02A605A4C003511F3 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		FE6F11B22A605A69003511F3 /* ActiveRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRecord.swift; sourceTree = "<group>"; };
+		FE6F11B52A605AB9003511F3 /* reMind.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = reMind.xcdatamodel; sourceTree = "<group>"; };
+		FEA517A92A548FBC0004D9D1 /* SwipeReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeReview.swift; sourceTree = "<group>"; };
+		FEA517AD2A54963E0004D9D1 /* SwipperCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipperCard.swift; sourceTree = "<group>"; };
+		FEDE8E042A4DFADE00EEF7EA /* reTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reTextField.swift; sourceTree = "<group>"; };
+		FEDE8E062A4DFEBD00EEF7EA /* reTexFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reTexFieldStyle.swift; sourceTree = "<group>"; };
+		FEDE8E082A4DFFE100EEF7EA /* BoxEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxEditorView.swift; sourceTree = "<group>"; };
+		FEDE8E0C2A4E037F00EEF7EA /* reTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reTextEditor.swift; sourceTree = "<group>"; };
+		FEE2DC722A4B5CE4006A535D /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		FEE2DC742A4B6172006A535D /* reBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reBackground.swift; sourceTree = "<group>"; };
+		FEE2DC772A4B70FA006A535D /* BoxCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCardView.swift; sourceTree = "<group>"; };
+		FEEFCBBC2A65DAA400A61FE9 /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE6A9F932A461E2400A84FC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE3ABECB2A4F5E7F00432ED4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABECC2A4F5E8F00432ED4 /* reRadioButtonGroup.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FE3ABECE2A4F654800432ED4 /* TermEditor */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABECF2A4F65BC00432ED4 /* TermEditorView.swift */,
+			);
+			path = TermEditor;
+			sourceTree = "<group>";
+		};
+		FE3ABED32A5326B500432ED4 /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABED62A5328C100432ED4 /* Components */,
+				FE3ABED42A5326C200432ED4 /* BoxView.swift */,
+			);
+			path = Box;
+			sourceTree = "<group>";
+		};
+		FE3ABED62A5328C100432ED4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABED72A5328FD00432ED4 /* TodaysCardsView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FE3ABEDD2A53521600432ED4 /* Swipper */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABEE72A53562400432ED4 /* Components */,
+				FE3ABEDE2A53522A00432ED4 /* SwipperView.swift */,
+			);
+			path = Swipper;
+			sourceTree = "<group>";
+		};
+		FE3ABEE02A53543300432ED4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABEE12A53544B00432ED4 /* Box.swift */,
+				FE3ABEE32A53545500432ED4 /* Term.swift */,
+				FEA517A92A548FBC0004D9D1 /* SwipeReview.swift */,
+				FE6F11B42A605AB9003511F3 /* reMind.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FE3ABEE72A53562400432ED4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABEE82A53563F00432ED4 /* SwipperLabel.swift */,
+				FEA517AD2A54963E0004D9D1 /* SwipperCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FE6A9F8D2A461E2400A84FC9 = {
+			isa = PBXGroup;
+			children = (
+				FE6A9F982A461E2400A84FC9 /* reMind */,
+				FE6A9F972A461E2400A84FC9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE6A9F972A461E2400A84FC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9F962A461E2400A84FC9 /* reMind.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE6A9F982A461E2400A84FC9 /* reMind */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9FA72A461F1400A84FC9 /* App */,
+				FE3ABEE02A53543300432ED4 /* Models */,
+				FE6A9FA82A461F1E00A84FC9 /* Utils */,
+				FE6A9FAE2A461FF200A84FC9 /* Features */,
+				FE6A9FB02A46202500A84FC9 /* Services */,
+				FE6A9FB12A46205F00A84FC9 /* Resources */,
+				FE6A9F9F2A461E2500A84FC9 /* Preview Content */,
+			);
+			path = reMind;
+			sourceTree = "<group>";
+		};
+		FE6A9F9F2A461E2500A84FC9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9FA02A461E2500A84FC9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FE6A9FA72A461F1400A84FC9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9F992A461E2400A84FC9 /* reMindApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FE6A9FA82A461F1E00A84FC9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9FAD2A461F9D00A84FC9 /* Modifiers */,
+				FE6A9FAC2A461F6900A84FC9 /* Styles */,
+				FE6A9FAB2A461F5700A84FC9 /* Components */,
+				FE6A9FAA2A461F3E00A84FC9 /* Extensions */,
+				FE6A9FA92A461F3400A84FC9 /* Protocols */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FE6A9FA92A461F3400A84FC9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE6F11B22A605A69003511F3 /* ActiveRecord.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FE6A9FAA2A461F3E00A84FC9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABEE52A5354AF00432ED4 /* reTheme.swift */,
+				FE6F11B02A605A4C003511F3 /* NSObject.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE6A9FAB2A461F5700A84FC9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FEE2DC742A4B6172006A535D /* reBackground.swift */,
+				FEDE8E042A4DFADE00EEF7EA /* reTextField.swift */,
+				FEDE8E0C2A4E037F00EEF7EA /* reTextEditor.swift */,
+				FE3ABEC62A4F59D800432ED4 /* reRadioButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FE6A9FAC2A461F6900A84FC9 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				FEE2DC722A4B5CE4006A535D /* Palette.swift */,
+				FEDE8E062A4DFEBD00EEF7EA /* reTexFieldStyle.swift */,
+				FE3ABED12A4F680C00432ED4 /* reButtonStyle.swift */,
+				FE3ABED92A532A4D00432ED4 /* reColorButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		FE6A9FAD2A461F9D00A84FC9 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				FE5B80792A4CB0DA00711F80 /* reBadge.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		FE6A9FAE2A461FF200A84FC9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABEDD2A53521600432ED4 /* Swipper */,
+				FE3ABED32A5326B500432ED4 /* Box */,
+				FE3ABECE2A4F654800432ED4 /* TermEditor */,
+				FE6A9FAF2A461FF900A84FC9 /* Boxes */,
+				FEDE8E032A4DF79900EEF7EA /* BoxEditor */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		FE6A9FAF2A461FF900A84FC9 /* Boxes */ = {
+			isa = PBXGroup;
+			children = (
+				FEE2DC762A4B70E9006A535D /* Components */,
+				FE6A9F9B2A461E2400A84FC9 /* BoxesView.swift */,
+				FEEFCBBC2A65DAA400A61FE9 /* BoxViewModel.swift */,
+			);
+			path = Boxes;
+			sourceTree = "<group>";
+		};
+		FE6A9FB02A46202500A84FC9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FE6F11AB2A605950003511F3 /* CoreData */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FE6A9FB12A46205F00A84FC9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE6A9F9D2A461E2500A84FC9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FE6F11AB2A605950003511F3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FE6F11AC2A6059FD003511F3 /* CoreDataStack.swift */,
+				FE6F11AE2A605A21003511F3 /* CoreDataModel.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		FEDE8E032A4DF79900EEF7EA /* BoxEditor */ = {
+			isa = PBXGroup;
+			children = (
+				FE3ABECB2A4F5E7F00432ED4 /* Components */,
+				FEDE8E082A4DFFE100EEF7EA /* BoxEditorView.swift */,
+			);
+			path = BoxEditor;
+			sourceTree = "<group>";
+		};
+		FEE2DC762A4B70E9006A535D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FEE2DC772A4B70FA006A535D /* BoxCardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE6A9F952A461E2400A84FC9 /* reMind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6A9FA42A461E2500A84FC9 /* Build configuration list for PBXNativeTarget "reMind" */;
+			buildPhases = (
+				FE6A9F922A461E2400A84FC9 /* Sources */,
+				FE6A9F932A461E2400A84FC9 /* Frameworks */,
+				FE6A9F942A461E2400A84FC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = reMind;
+			productName = reMind;
+			productReference = FE6A9F962A461E2400A84FC9 /* reMind.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE6A9F8E2A461E2400A84FC9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					FE6A9F952A461E2400A84FC9 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = FE6A9F912A461E2400A84FC9 /* Build configuration list for PBXProject "reMind" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE6A9F8D2A461E2400A84FC9;
+			productRefGroup = FE6A9F972A461E2400A84FC9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE6A9F952A461E2400A84FC9 /* reMind */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE6A9F942A461E2400A84FC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6A9FA12A461E2500A84FC9 /* Preview Assets.xcassets in Resources */,
+				FE6A9F9E2A461E2500A84FC9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE6A9F922A461E2400A84FC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEEFCBBD2A65DAA400A61FE9 /* BoxViewModel.swift in Sources */,
+				FEDE8E052A4DFADE00EEF7EA /* reTextField.swift in Sources */,
+				FE3ABEE92A53563F00432ED4 /* SwipperLabel.swift in Sources */,
+				FEE2DC752A4B6172006A535D /* reBackground.swift in Sources */,
+				FEA517AA2A548FBC0004D9D1 /* SwipeReview.swift in Sources */,
+				FEA517AE2A54963E0004D9D1 /* SwipperCard.swift in Sources */,
+				FE3ABEE22A53544B00432ED4 /* Box.swift in Sources */,
+				FE3ABED52A5326C200432ED4 /* BoxView.swift in Sources */,
+				FE3ABECD2A4F5E8F00432ED4 /* reRadioButtonGroup.swift in Sources */,
+				FEE2DC732A4B5CE4006A535D /* Palette.swift in Sources */,
+				FE3ABEDA2A532A4D00432ED4 /* reColorButtonStyle.swift in Sources */,
+				FE3ABED22A4F680C00432ED4 /* reButtonStyle.swift in Sources */,
+				FE5B807A2A4CB0DA00711F80 /* reBadge.swift in Sources */,
+				FE3ABEC72A4F59D800432ED4 /* reRadioButton.swift in Sources */,
+				FEDE8E0D2A4E037F00EEF7EA /* reTextEditor.swift in Sources */,
+				FEDE8E092A4DFFE100EEF7EA /* BoxEditorView.swift in Sources */,
+				FE3ABED02A4F65BC00432ED4 /* TermEditorView.swift in Sources */,
+				FE6A9F9C2A461E2400A84FC9 /* BoxesView.swift in Sources */,
+				FE3ABED82A5328FD00432ED4 /* TodaysCardsView.swift in Sources */,
+				FE6F11AF2A605A21003511F3 /* CoreDataModel.swift in Sources */,
+				FEDE8E072A4DFEBD00EEF7EA /* reTexFieldStyle.swift in Sources */,
+				FE3ABEDF2A53522A00432ED4 /* SwipperView.swift in Sources */,
+				FE6F11B12A605A4C003511F3 /* NSObject.swift in Sources */,
+				FE6F11AD2A6059FD003511F3 /* CoreDataStack.swift in Sources */,
+				FE3ABEE42A53545500432ED4 /* Term.swift in Sources */,
+				FE6F11B32A605A69003511F3 /* ActiveRecord.swift in Sources */,
+				FE3ABEE62A5354AF00432ED4 /* reTheme.swift in Sources */,
+				FE6A9F9A2A461E2400A84FC9 /* reMindApp.swift in Sources */,
+				FEE2DC782A4B70FA006A535D /* BoxCardView.swift in Sources */,
+				FE6F11B62A605AB9003511F3 /* reMind.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FE6A9FA22A461E2500A84FC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE6A9FA32A461E2500A84FC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE6A9FA52A461E2500A84FC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"reMind/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosi.pedro0x53.reMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE6A9FA62A461E2500A84FC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"reMind/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosi.pedro0x53.reMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE6A9F912A461E2400A84FC9 /* Build configuration list for PBXProject "reMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6A9FA22A461E2500A84FC9 /* Debug */,
+				FE6A9FA32A461E2500A84FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE6A9FA42A461E2500A84FC9 /* Build configuration list for PBXNativeTarget "reMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6A9FA52A461E2500A84FC9 /* Debug */,
+				FE6A9FA62A461E2500A84FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE6F11B42A605AB9003511F3 /* reMind.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE6F11B52A605AB9003511F3 /* reMind.xcdatamodel */,
+			);
+			currentVersion = FE6F11B52A605AB9003511F3 /* reMind.xcdatamodel */;
+			path = reMind.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FE6A9F8E2A461E2400A84FC9 /* Project object */;
+}
